@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog — Düşünceler & Yazılar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F0;
+      --surface: #FFFFFF;
+      --ink: #1A1A18;
+      --muted: #8A8880;
+      --accent: #C8502A;
+      --border: #E5E2DA;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(247,245,240,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -0.01em;
+    }
+    .logo span { color: var(--accent); }
+
+    nav { display: flex; gap: 2rem; list-style: none; }
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 4rem);
+      max-width: 860px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .hero-label::after {
+      content: '';
+      display: block; width: 2.5rem; height: 1px;
+      background: var(--accent); opacity: 0.5;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { color: var(--accent); font-style: italic; }
+
+    .hero p {
+      font-size: 1.1rem;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    /* ── FEATURED POST ── */
+    .featured {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-title {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    @media (max-width: 700px) { .featured-card { grid-template-columns: 1fr; gap: 2rem; } }
+
+    .featured-img {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #E8E0D5 0%, #D5C9B8 100%);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='%23C8A882' stroke-width='0.5' opacity='0.4'/%3E%3C/svg%3E") center/60px repeat;
+    }
+
+    .featured-content {}
+
+    .post-category {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .featured-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: -0.015em;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .featured-content h2:hover { color: var(--accent); }
+
+    .featured-content p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 1.75rem;
+    }
+
+    .post-meta {
+      display: flex; align-items: center; gap: 1rem;
+      font-size: 0.8rem; color: var(--muted);
+    }
+    .post-meta .author { font-weight: 500; color: var(--ink); }
+    .post-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+
+    .read-more {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none;
+      border-bottom: 1px solid var(--ink);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+      margin-top: 1.5rem;
+    }
+    .read-more:hover { color: var(--accent); border-color: var(--accent); }
+    .read-more svg { transition: transform 0.2s; }
+    .read-more:hover svg { transform: translateX(4px); }
+
+    /* ── POST GRID ── */
+    .posts-section {
+      padding: clamp(3rem, 6vw, 5rem) clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .posts-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+
+    .view-all {
+      font-size: 0.78rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .view-all:hover { color: var(--ink); }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem 2.5rem;
+    }
+
+    .post-card {
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: slideUp 0.5s ease forwards;
+    }
+    .post-card:nth-child(1) { animation-delay: 0.1s; }
+    .post-card:nth-child(2) { animation-delay: 0.2s; }
+    .post-card:nth-child(3) { animation-delay: 0.3s; }
+    .post-card:nth-child(4) { animation-delay: 0.4s; }
+    .post-card:nth-child(5) { animation-delay: 0.5s; }
+    .post-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes slideUp { to { opacity: 1; transform: none; } }
+
+    .post-card-img {
+      aspect-ratio: 16/9;
+      border-radius: 3px;
+      margin-bottom: 1.2rem;
+      overflow: hidden;
+      background: var(--border);
+      position: relative;
+    }
+    .post-card-img .color-block {
+      width: 100%; height: 100%;
+      transition: transform 0.4s ease;
+    }
+    .post-card:hover .color-block { transform: scale(1.04); }
+
+    .c1 { background: linear-gradient(135deg, #D4E8D4, #A8C8A8); }
+    .c2 { background: linear-gradient(135deg, #E8D4D4, #C8A8A8); }
+    .c3 { background: linear-gradient(135deg, #D4D4E8, #A8A8C8); }
+    .c4 { background: linear-gradient(135deg, #E8E4D4, #C8C0A8); }
+    .c5 { background: linear-gradient(135deg, #D4E4E8, #A8B8C8); }
+    .c6 { background: linear-gradient(135deg, #E8D8E8, #C8A8C8); }
+
+    .post-card h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.6rem;
+      transition: color 0.2s;
+    }
+    .post-card:hover h3 { color: var(--accent); }
+
+    .post-card p {
+      font-size: 0.875rem;
+      line-height: 1.7;
+      color: var(--muted);
+      margin-bottom: 1rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .post-card .post-meta { font-size: 0.75rem; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: clamp(1.5rem, 5vw, 4rem);
+      margin: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 1px; background: var(--border);
+    }
+
+    /* ── NEWSLETTER ── */
+    .newsletter {
+      margin: 0 clamp(1.5rem, 5vw, 4rem) clamp(3rem, 6vw, 5rem);
+      background: var(--ink);
+      color: #F7F5F0;
+      border-radius: 6px;
+      padding: clamp(2.5rem, 5vw, 4rem);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem; align-items: center;
+    }
+    @media (max-width: 600px) { .newsletter { grid-template-columns: 1fr; } }
+
+    .newsletter h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    .newsletter p { font-size: 0.9rem; opacity: 0.55; line-height: 1.6; }
+
+    .nl-form { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .nl-form input {
+      flex: 1; min-width: 200px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 3px;
+      padding: 0.75rem 1rem;
+      font-family: var(--sans);
+      font-size: 0.9rem; color: #F7F5F0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .nl-form input::placeholder { opacity: 0.4; }
+    .nl-form input:focus { border-color: rgba(255,255,255,0.4); }
+
+    .nl-form button {
+      background: var(--accent);
+      border: none; border-radius: 3px;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--sans);
+      font-size: 0.82rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff; cursor: pointer;
+      transition: opacity 0.2s;
+      white-space: nowrap;
+    }
+    .nl-form button:hover { opacity: 0.85; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a {
+      font-size: 0.8rem; color: var(--muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
+
+    /* ── TAGS ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .tag {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--muted); background: var(--border);
+      padding: 0.3rem 0.7rem; border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="#" class="logo">mektup<span>.</span></a>
+    <nav>
+      <a href="#">Yazılar</a>
+      <a href="#">Hakkında</a>
+      <a href="#">Arşiv</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-label">Kişisel Blog</div>
+    <h1>Düşünceler,<br><em>notlar</em> ve<br>keşifler.</h1>
+    <p>Teknoloji, tasarım ve gündelik yaşam üzerine kişisel yazılar. Haftada bir, düzenli olarak.</p>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="featured">
+    <div class="section-title">Öne Çıkan Yazı</div>
+    <div class="featured-card">
+      <div class="featured-img"></div>
+      <div class="featured-content">
+        <span class="post-category">Teknoloji</span>
+        <h2>Dikkat dağınıklığı çağında odaklanmanın yeni anlamı</h2>
+        <p>Bildirimler, sekmeler ve sonsuz akış — bunların ortasında gerçek anlamda odaklanmak nasıl bir şey haline geldi? Kendi deneyimlerimden yola çıkarak yazdıklarım.</p>
+        <div class="tags">
+          <span class="tag">Verimlilik</span>
+          <span class="tag">Düşünce</span>
+          <span class="tag">Dijital Yaşam</span>
+        </div>
+        <a href="#" class="read-more">
+          Devamını Oku
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M2 7h10M8 3l4 4-4 4"/>
+          </svg>
+        </a>
+        <div class="post-meta" style="margin-top: 1.5rem;">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>8 Mart 2026</span>
+          <span class="dot"></span>
+          <span>6 dk okuma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section class="posts-section">
+    <div class="posts-header">
+      <div class="section-title" style="margin-bottom:0">Son Yazılar</div>
+      <a href="#" class="view-all">Tümünü Gör →</a>
+    </div>
+    <div class="posts-grid">
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c1"></div></div>
+        <span class="post-category">Tasarım</span>
+        <h3>Boşluğun gücü: beyaz alan neden bu kadar önemli?</h3>
+        <p>Tasarımda boş alan, söylenenin kadar söylenmeyen de anlatır. Bu ince dengeyi anlamak üzerine.</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>3 Mart 2026</span>
+          <span class="dot"></span>
+          <span>4 dk</span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c2"></div></div>
+        <span class="post-category">Günlük</span>
+        <h3>Sabah rutinimde işe yarayan tek şey</h3>
+        <p>Pek çok rutini denedim. Çoğu tutmadı. Ama bir alışkanlık vardı ki her şeyi değiştirdi.</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>24 Şubat 2026</span>
+          <span class="dot"></span>
+          <span>3 dk</span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c3"></div></div>
+        <span class="post-category">Kitap</span>
+        <h3>Bu yıl okuduklarım ve bıraktıkları izler</h3>
+        <p>Bir kitap listesi değil; bu kitapların bende ne değiştirdiğine dair kısa notlar.</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>15 Şubat 2026</span>
+          <span class="dot"></span>
+          <span>7 dk</span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c4"></div></div>
+        <span class="post-category">Kod</span>
+        <h3>Sade kod yazmanın kendine özgü estetiği</h3>
+        <p>Kod yazmak bir sanattır — ama hangi sanat anlayışına sahipsiniz? Okunabilirliği tercih edenlerin manifestosu.</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>7 Şubat 2026</span>
+          <span class="dot"></span>
+          <span>5 dk</span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c5"></div></div>
+        <span class="post-category">Seyahat</span>
+        <h3>Yavaş seyahat: bir şehirde üç hafta kalmak</h3>
+        <p>Turistik koşuşturma yerine bir yerde gerçekten var olmayı seçmek nasıl bir şey?</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>29 Ocak 2026</span>
+          <span class="dot"></span>
+          <span>8 dk</span>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <div class="post-card-img"><div class="color-block c6"></div></div>
+        <span class="post-category">Düşünce</span>
+        <h3>İnternet bizi gerçekten aptallaştırıyor mu?</h3>
+        <p>Nicholas Carr'ın sorusunu günümüze taşıyarak yanıtlamaya çalıştığım kişisel bir deneme.</p>
+        <div class="post-meta">
+          <span class="author">Sen</span>
+          <span class="dot"></span>
+          <span>20 Ocak 2026</span>
+          <span class="dot"></span>
+          <span>6 dk</span>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <div class="newsletter">
+    <div>
+      <h3>Yeni yazıları kaçırma.</h3>
+      <p>Her yeni yazıda doğrudan e-posta kutuna gelsin. Spam yok, sadece içerik.</p>
+    </div>
+    <div class="nl-form">
+      <input type="email" placeholder="e-posta adresin" />
+      <button>Abone Ol</button>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 mektup. Tüm hakları saklıdır.</p>
+    <div class="footer-links">
+      <a href="#">Twitter</a>
+      <a href="#">RSS</a>
+      <a href="#">İletişim</a>
+    </div>
+  </footer>
+
+</body>
+</html>
