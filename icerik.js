@@ -298,7 +298,7 @@ const ICERIK = {
         yazar:    "MODS",
         tarih:    "Mayıs 2026",
         sure:     "",
-        renk:     "assets/Etkinlikler/reeding.png",
+        renk:     "c1",
       },
       {
         kategori: "Yönetmen Sineması",
