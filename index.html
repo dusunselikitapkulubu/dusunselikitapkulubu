@@ -512,9 +512,21 @@
   showPage('basvuru');
   </script>
   <script>
-function toggleMenu(){
-  document.querySelector("nav").classList.toggle("show");
-}
+  // Menü aç/kapa
+  function toggleMenu(){
+    document.querySelector("nav").classList.toggle("show");
+  }
+
+  // Menü linklerine tıklanınca mobil menüyü kapatma
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const nav = document.querySelector("nav");
+      if (nav.classList.contains("show")) {
+        nav.classList.remove("show");
+      }
+    });
+  });
 </script>
 </body>
 </html>
