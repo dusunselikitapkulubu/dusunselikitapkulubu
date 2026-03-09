@@ -232,7 +232,7 @@ const ICERIK = {
         ],
       },
 
-      /*{
+      {
         id:     "bolum-e",
         harf:   "E",
         baslik: "Ek Etkinlikler ve Yönetmen Sineması",
@@ -265,7 +265,7 @@ const ICERIK = {
         ],
       },
     ],
-  },*/
+  },
 
   // ── İletişim Sayfası ────────────────────────────────────
   iletisim: {
