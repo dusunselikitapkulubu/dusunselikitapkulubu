@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Düşünseli Kitap Kulübü</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #F7F5F0; --surface: #FFFFFF; --ink: #1A1A18; --muted: #8A8880;
+      --accent: #C8502A; --border: #E5E2DA;
+      --serif: 'Playfair Display', Georgia, serif; --sans: 'DM Sans', sans-serif;
+    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; min-height: 100vh; opacity: 0; animation: fadeIn 0.8s ease forwards; }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @keyframes slideUp { to { opacity: 1; transform: none; } }
+    @keyframes pageFade { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+    header { position: sticky; top: 0; z-index: 100; background: rgba(247,245,240,0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 clamp(1.5rem,5vw,4rem); display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { display: flex; align-items: center; gap: 0.5rem; font-family: var(--serif); font-size: 1rem; color: var(--ink); text-decoration: none; letter-spacing: -0.01em; cursor: pointer; }
+    .logo-img { height: 64px; width: 64px; flex-shrink: 0; }
+    .logo span { color: var(--accent); }
+    nav { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    nav a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+    nav a:hover { color: var(--ink); }
+    nav a.active { color: var(--accent); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a { display: flex; align-items: center; gap: 0.3rem; }
+    .nav-dropdown > a::after { content: ''; display: inline-block; width: 6px; height: 6px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); transition: transform 0.2s; }
+    .nav-dropdown:hover > a::after { transform: rotate(225deg) translateY(-2px); }
+    .dropdown-menu { position: absolute; top: calc(100% + 1rem); right: 0; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; min-width: 180px; padding: 0.5rem 0; box-shadow: 0 8px 24px rgba(0,0,0,0.08); opacity: 0; visibility: hidden; transform: translateY(-6px); transition: opacity 0.2s, transform 0.2s, visibility 0.2s; z-index: 200; }
+    .nav-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown-menu a { display: block; padding: 0.6rem 1.2rem; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); text-decoration: none; transition: color 0.15s, background 0.15s; cursor: pointer; }
+    .dropdown-menu a:hover { color: var(--accent); background: var(--bg); }
+    .dropdown-divider { height: 1px; background: var(--border); margin: 0.4rem 0; }
+
+    .page { display: none; }
+    .page.active { display: block; }
+    .page.fade-in { animation: pageFade 0.35s ease forwards; }
+
+    .hero { padding: clamp(4rem,10vw,8rem) clamp(1.5rem,5vw,4rem); max-width: 860px; border-bottom: 1px solid var(--border); }
+    .hero-label { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
+    .hero-label::after { content: ''; display: block; width: 2.5rem; height: 1px; background: var(--accent); opacity: 0.5; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(2.8rem,6vw,5rem); font-weight: 400; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+    .hero h1 em { color: var(--accent); font-style: italic; }
+    .hero p { font-size: 1.1rem; line-height: 1.75; color: var(--muted); max-width: 520px; }
+
+    .section-title { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2.5rem; }
+
+    /* Başvuru */
+    .basvuru-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); max-width: 640px; }
+    .basvuru-badge { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: rgba(200,80,42,0.08); border: 1px solid rgba(200,80,42,0.2); color: var(--accent); padding: 0.4rem 0.8rem; border-radius: 2px; margin-bottom: 1.5rem; }
+    .basvuru-info { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 2rem; margin-bottom: 2rem; }
+    .basvuru-info p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 0.75rem; }
+    .basvuru-info p:last-child { margin-bottom: 0; }
+    .basvuru-alt-not { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+    .form-btn { display: inline-block; margin-top: 1.5rem; background: var(--accent); color: #fff; text-decoration: none; padding: 0.75rem 1.5rem; border-radius: 3px; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: opacity 0.2s; }
+    .form-btn:hover { opacity: 0.85; }
+
+    /* Duyurular */
+    .duyurular-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); max-width: 760px; }
+    .duyuru-item { border-bottom: 1px solid var(--border); padding: 2rem 0; opacity: 0; transform: translateY(12px); animation: slideUp 0.4s ease forwards; }
+    .duyuru-item:nth-child(1){animation-delay:.05s} .duyuru-item:nth-child(2){animation-delay:.12s} .duyuru-item:nth-child(3){animation-delay:.19s} .duyuru-item:nth-child(4){animation-delay:.26s} .duyuru-item:nth-child(5){animation-delay:.33s}
+    .duyuru-item:first-child { padding-top: 0; }
+    .duyuru-item:last-child { border-bottom: none; }
+    .duyuru-meta { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+    .duyuru-badge-type { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; background: var(--border); color: var(--muted); padding: 0.25rem 0.6rem; border-radius: 2px; }
+    .duyuru-badge-type.yeni { background: rgba(200,80,42,0.08); color: var(--accent); }
+    .duyuru-date { font-size: 0.8rem; color: var(--muted); }
+    .duyuru-item h3 { font-family: var(--serif); font-size: 1.25rem; font-weight: 400; margin-bottom: 0.6rem; letter-spacing: -0.01em; }
+    .duyuru-item p { font-size: 0.9rem; line-height: 1.75; color: var(--muted); }
+
+    /* Hakkında */
+    .hakkinda-tabs { display: flex; border-bottom: 1px solid var(--border); margin-bottom: 3rem; padding: 0 clamp(1.5rem,5vw,4rem); }
+    .hakkinda-tab { font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); padding: 0.75rem 1.5rem; cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s, border-color 0.2s; }
+    .hakkinda-tab:hover { color: var(--ink); }
+    .hakkinda-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+    .hakkinda-panel { display: none; }
+    .hakkinda-panel.active { display: block; animation: pageFade 0.3s ease forwards; }
+    .hakkinda-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); max-width: 860px; }
+    .hakkinda-intro p { font-size: 1.05rem; line-height: 1.85; color: var(--ink); margin-bottom: 1.25rem; max-width: 640px; }
+    .hakkinda-intro p:last-child { margin-bottom: 0; }
+
+    /* Kurallar */
+    .toc { padding: 2.5rem clamp(1.5rem,5vw,4rem); border-bottom: 1px solid var(--border); max-width: 860px; }
+    .toc-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .toc-links a { font-size: 0.88rem; font-weight: 500; color: var(--ink); text-decoration: none; display: inline-flex; align-items: center; gap: 0.6rem; transition: color 0.2s; width: fit-content; cursor: pointer; }
+    .toc-links a:hover { color: var(--accent); }
+    .toc-links a::before { content: ''; display: inline-block; width: 1.2rem; height: 1px; background: var(--border); transition: background 0.2s, width 0.2s; }
+    .toc-links a:hover::before { background: var(--accent); width: 1.8rem; }
+    .rules-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); max-width: 860px; }
+    .rule-chapter { margin-bottom: 4rem; opacity: 0; transform: translateY(16px); animation: slideUp 0.5s ease forwards; }
+    .rule-chapter:nth-child(1){animation-delay:.05s} .rule-chapter:nth-child(2){animation-delay:.12s} .rule-chapter:nth-child(3){animation-delay:.19s} .rule-chapter:nth-child(4){animation-delay:.26s} .rule-chapter:nth-child(5){animation-delay:.33s}
+    .chapter-header { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+    .chapter-letter { font-family: var(--serif); font-size: 3rem; font-weight: 400; color: var(--border); line-height: 1; flex-shrink: 0; }
+    .chapter-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--ink); letter-spacing: -0.01em; }
+    .rule-subsection { margin-bottom: 2rem; }
+    .subsection-label { display: inline-block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+    .rule-block p { font-size: 0.95rem; line-height: 1.85; color: var(--ink); margin-bottom: 0.9rem; }
+    .rule-block p:last-child { margin-bottom: 0; }
+    .rule-table { overflow-x: auto; margin: 1.25rem 0; border: 1px solid var(--border); border-radius: 4px; }
+    .rule-table table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .rule-table th { text-align: left; font-size: 0.68rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.7rem 1rem; border-bottom: 1px solid var(--border); background: var(--surface); }
+    .rule-table td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--ink); vertical-align: top; line-height: 1.6; }
+    .rule-table tr:last-child td { border-bottom: none; }
+    .rule-table tr:hover td { background: var(--bg); }
+    .puan-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+    .puan { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.04em; color: var(--accent); background: rgba(200,80,42,0.08); border: 1px solid rgba(200,80,42,0.2); padding: 0.3rem 0.65rem; border-radius: 2px; }
+    .rule-divider { width: 100%; height: 1px; background: var(--border); margin: 0 0 4rem 0; }
+
+    /* İletişim */
+    .iletisim-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); max-width: 640px; }
+    .iletisim-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 2rem; }
+    @media (max-width: 560px) { .iletisim-grid { grid-template-columns: 1fr; } }
+    .iletisim-card { border: 1px solid var(--border); border-radius: 4px; padding: 1.5rem; background: var(--surface); transition: border-color 0.2s; }
+    .iletisim-card:hover { border-color: var(--accent); }
+    .ic-label { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem; }
+    .ic-value { font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+    .ic-value a { color: var(--accent); text-decoration: none; }
+    .ic-value a:hover { text-decoration: underline; }
+    .iletisim-note { font-size: 0.9rem; line-height: 1.8; color: var(--muted); }
+
+    /* Etkinlikler */
+    .etkinlikler-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); }
+    .featured { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); border-bottom: 1px solid var(--border); }
+    .featured-card { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    @media (max-width: 700px) { .featured-card { grid-template-columns: 1fr; gap: 2rem; } }
+    .featured-img { aspect-ratio: 4/3; background: linear-gradient(135deg, #E8E0D5 0%, #D5C9B8 100%); border-radius: 4px; position: relative; overflow: hidden; }
+    .featured-img::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='%23C8A882' stroke-width='0.5' opacity='0.4'/%3E%3C/svg%3E") center/60px repeat; }
+    .post-category { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .featured-content h2 { font-family: var(--serif); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 1rem; transition: color 0.2s; }
+    .featured-content h2:hover { color: var(--accent); }
+    .featured-content p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 1.75rem; }
+    .post-meta { display: flex; align-items: center; gap: 1rem; font-size: 0.8rem; color: var(--muted); }
+    .post-meta .author { font-weight: 500; color: var(--ink); }
+    .post-meta .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--border); }
+    .read-more { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; margin-top: 1.5rem; cursor: pointer; }
+    .read-more:hover { color: var(--accent); border-color: var(--accent); }
+    .read-more svg { transition: transform 0.2s; }
+    .read-more:hover svg { transform: translateX(4px); }
+    .posts-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 2.5rem; }
+    .view-all { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    .view-all:hover { color: var(--ink); }
+    .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 2rem 2.5rem; }
+    .post-card { cursor: pointer; opacity: 0; transform: translateY(16px); animation: slideUp 0.5s ease forwards; }
+    .post-card:nth-child(1){animation-delay:.1s} .post-card:nth-child(2){animation-delay:.2s} .post-card:nth-child(3){animation-delay:.3s} .post-card:nth-child(4){animation-delay:.4s} .post-card:nth-child(5){animation-delay:.5s} .post-card:nth-child(6){animation-delay:.6s}
+    .post-card-img { aspect-ratio: 16/9; border-radius: 3px; margin-bottom: 1.2rem; overflow: hidden; background: var(--border); position: relative; }
+    .post-card-img .color-block { width: 100%; height: 100%; transition: transform 0.4s ease; }
+    .post-card-img img{ width:100%; height:100%; object-fit:cover; display:block;}
+    .post-card:hover .color-block { transform: scale(1.04); }
+    .c1{background:linear-gradient(135deg,#D4E8D4,#A8C8A8)} .c2{background:linear-gradient(135deg,#E8D4D4,#C8A8A8)} .c3{background:linear-gradient(135deg,#D4D4E8,#A8A8C8)} .c4{background:linear-gradient(135deg,#E8E4D4,#C8C0A8)} .c5{background:linear-gradient(135deg,#D4E4E8,#A8B8C8)} .c6{background:linear-gradient(135deg,#E8D8E8,#C8A8C8)}
+    .post-card h3 { font-family: var(--serif); font-size: 1.15rem; font-weight: 400; line-height: 1.35; letter-spacing: -0.01em; margin-bottom: 0.6rem; transition: color 0.2s; }
+    .post-card:hover h3 { color: var(--accent); }
+    .post-card p { font-size: 0.875rem; line-height: 1.7; color: var(--muted); margin-bottom: 1rem; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .post-card .post-meta { font-size: 0.75rem; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+    .tag { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: var(--border); padding: 0.3rem 0.7rem; border-radius: 2px; }
+    .posts-section { padding: clamp(3rem,6vw,5rem) clamp(1.5rem,5vw,4rem); }
+
+    footer { border-top: 1px solid var(--border); padding: 2rem clamp(1.5rem,5vw,4rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.8rem; color: var(--muted); }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--muted); text-decoration: none; transition: color 0.2s; cursor: pointer; }
+    .footer-links a:hover { color: var(--ink); }
+
+    @media (max-width: 600px) { nav { gap: 1.2rem; } nav a { font-size: 0.75rem; } .chapter-letter { font-size: 2rem; } }
+
+    /* MOBİL MENÜ */
+    .menu-toggle { display:none; font-size:1.8rem; cursor:pointer; }
+
+    @media (max-width:768px){
+      .menu-toggle { display:block; }
+      nav { position:absolute; top:64px; left:0; right:0; background:var(--surface); border-bottom:1px solid var(--border); flex-direction:column; align-items:flex-start; padding:1rem; gap:0; display:none; }
+      nav.show { display:flex; }
+      nav a { width:100%; padding:0.8rem 0; }
+      .nav-dropdown { width:100%; }
+      .dropdown-menu { position:static; opacity:1; visibility:visible; transform:none; border:none; box-shadow:none; padding-left:1rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  <a class="logo" onclick="showPage('etkinlikler')">
+    <img src="assets/logo/logo.png" alt="Düşünseli Kitap Kulübü" class="logo-img" />
+    <span id="site-adi"></span><span>.</span>
+  </a>
+
+  <!-- MOBİL MENÜ BUTONU -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <nav>
+    <a onclick="showPage('basvuru')"   id="nav-basvuru">Başvuru</a>
+    <a onclick="showPage('duyurular')" id="nav-duyurular">Duyurular</a>
+
+    <div class="nav-dropdown">
+      <a id="nav-hakkinda">Kulüp Hakkında</a>
+      <div class="dropdown-menu">
+        <a onclick="showHakkinda('genel')">Genel Bilgi</a>
+        <div class="dropdown-divider"></div>
+        <a onclick="showHakkinda('kurallar')">Kulüp Kuralları</a>
+      </div>
+    </div>
+
+    <a onclick="showPage('etkinlikler')" id="nav-etkinlikler">Etkinlikler</a>
+    <a onclick="showPage('iletisim')" id="nav-iletisim">İletişim</a>
+  </nav>
+</header>
+
+  <div id="page-basvuru"   class="page"></div>
+  <div id="page-duyurular" class="page"></div>
+  <div id="page-etkinlikler" class="page"></div>
+  <div id="page-hakkinda"  class="page"></div>
+  <div id="page-iletisim"  class="page"></div>
+
+  <script src="icerik.js"></script>
+  <script>
+  // ── Yardımcı render fonksiyonları ──────────────────────
+
+  function hero(etiket, baslik, aciklama) {
+    return `<section class="hero">
+      <div class="hero-label">${etiket}</div>
+      <h1>${baslik.replace(/\n/g, '<br>')}</h1>
+      <p>${aciklama}</p>
+    </section>`;
+  }
+
+  function footer(sol, linkler) {
+    const linkHTML = linkler.map(l =>
+      l.onclick
+        ? `<a onclick="${l.onclick}">${l.yazi}</a>`
+        : `<a href="${l.href}" ${l.target ? `target="${l.target}"` : ''}>${l.yazi}</a>`
+    ).join('');
+    return `<footer><p>${sol}</p><div class="footer-links">${linkHTML}</div></footer>`;
+  }
+
+  function renderIcerikBlok(bloklar) {
+    return bloklar.map(b => {
+      if (b.tip === 'paragraf') return `<p>${b.metin}</p>`;
+      if (b.tip === 'tablo') return renderTablo(b);
+      if (b.tip === 'puanlar') return `<div class="puan-list">${b.puanlar.map(p => `<span class="puan">${p}</span>`).join('')}</div>`;
+      if (b.tip === 'altbolum') return `
+        <div class="rule-subsection">
+          <span class="subsection-label">${b.etiket}</span>
+          <div class="rule-block">${renderIcerikBlok(b.icerik)}</div>
+        </div>`;
+      return '';
+    }).join('');
+  }
+
+  function renderTablo(t) {
+    const ths = t.basliklar.map(h => `<th>${h}</th>`).join('');
+    const trs = t.satirlar.map(r => `<tr>${r.map(c => `<td>${c}</td>`).join('')}</tr>`).join('');
+    return `<div class="rule-table"><table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table></div>`;
+  }
+
+  // ── Sayfa render fonksiyonları ─────────────────────────
+
+  function renderBasvuru() {
+    const v = ICERIK.basvuru;
+    const bilgiHTML = v.bilgiler.map(b => `
+      <p><strong>${b.baslik}</strong></p>
+      ${b.paragraflar.map(p => `<p>${p}</p>`).join('')}
+    `).join('');
+
+    const formBtn = v.formLinki
+      ? `<a class="form-btn" href="${v.formLinki}" target="_blank">${v.formButonYazi}</a>`
+      : '';
+
+    return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
+      + `<section class="basvuru-section">
+          <div class="basvuru-badge">${v.rozet}</div>
+          <div class="basvuru-info">${bilgiHTML}</div>
+          <p class="basvuru-alt-not">${v.altNot}</p>
+          ${formBtn}
+        </section>`
+      + footer(ICERIK.site.telif, [
+          { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
+          { onclick: "showPage('iletisim')", yazi: 'İletişim' },
+        ]);
+  }
+
+  function renderDuyurular() {
+    const v = ICERIK.duyurular;
+    const duyuruHTML = v.liste.map(d => `
+      <div class="duyuru-item">
+        <div class="duyuru-meta">
+          <span class="duyuru-badge-type ${d.tip === 'yeni' ? 'yeni' : ''}">${d.tip.charAt(0).toUpperCase() + d.tip.slice(1)}</span>
+          <span class="duyuru-date">${d.tarih}</span>
+        </div>
+        <h3>${d.baslik}</h3>
+        <p>${d.metin}</p>
+      </div>`).join('');
+
+    return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
+      + `<section class="duyurular-section">${duyuruHTML}</section>`
+      + footer(ICERIK.site.telif, [
+          { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
+          { onclick: "showPage('basvuru')", yazi: 'Başvuru' },
+        ]);
+  }
+
+  function renderHakkinda() {
+    const v = ICERIK.hakkinda;
+
+    // TOC
+    const tocLinks = ICERIK.kurallar.bolumler.map((b, i) =>
+      `<a onclick="scrollToRule('${b.id}')">${i + 1} — ${b.baslik}</a>`
+    ).join('');
+
+    // Kurallar bölümleri
+    const bolumlerHTML = ICERIK.kurallar.bolumler.map((b, i) => `
+      <div class="rule-chapter" id="${b.id}">
+        <div class="chapter-header">
+          <span class="chapter-letter">${b.harf}</span>
+          <span class="chapter-title">${b.baslik}</span>
+        </div>
+        <div class="rule-block">${renderIcerikBlok(b.icerik)}</div>
+      </div>
+      ${i < ICERIK.kurallar.bolumler.length - 1 ? '<div class="rule-divider"></div>' : ''}
+    `).join('');
+
+    return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
+      + `<div class="hakkinda-tabs">
+          <div class="hakkinda-tab active" onclick="switchHakkindaTab('genel')">Genel Bilgi</div>
+          <div class="hakkinda-tab" onclick="switchHakkindaTab('kurallar')">Kulüp Kuralları</div>
+        </div>
+        <div id="panel-genel" class="hakkinda-panel active">
+          <section class="hakkinda-section">
+            <div class="hakkinda-intro">
+              ${v.genelBilgi.map(p => `<p>${p}</p>`).join('')}
+              <p>Instagram: <a href="${ICERIK.site.instagram}" target="_blank" style="color:var(--accent);text-decoration:none;font-weight:500;">${ICERIK.site.instagramKullanici}</a></p>
+            </div>
+          </section>
+        </div>
+        <div id="panel-kurallar" class="hakkinda-panel">
+          <section class="toc">
+            <div class="section-title">İçindekiler</div>
+            <div class="toc-links">${tocLinks}</div>
+          </section>
+          <section class="rules-section">${bolumlerHTML}</section>
+        </div>`
+      + footer(`${ICERIK.site.telif.replace('saklıdır.', 'saklıdır.')} — ${ICERIK.site.sonGuncelleme}`, [
+          { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
+          { onclick: "showPage('basvuru')", yazi: 'Başvuru' },
+          { onclick: "showPage('iletisim')", yazi: 'İletişim' },
+        ]);
+  }
+
+  function renderIletisim() {
+    const v = ICERIK.iletisim;
+    const kartHTML = v.kartlar.map(k => `
+      <div class="iletisim-card">
+        <div class="ic-label">${k.etiket}</div>
+        <div class="ic-value">${k.link ? `<a href="${k.link}" target="_blank">${k.deger}</a>` : k.deger}</div>
+      </div>`).join('');
+
+    return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
+      + `<section class="iletisim-section">
+          <div class="iletisim-grid">${kartHTML}</div>
+          <p class="iletisim-note">${v.not}</p>
+        </section>`
+      + footer(ICERIK.site.telif, [
+          { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
+          { onclick: "showPage('basvuru')", yazi: 'Başvuru' },
+        ]);
+  }
+
+  function renderEtkinlikler() {
+    const v = ICERIK.etkinlikler;
+
+   const oneItemHTML = v.one
+  ? `<section class="featured">
+      <div class="section-title">Öne Çıkan Etkinlik</div>
+      <div class="featured-card">
+        <div class="featured-img">
+          ${v.one.gorsel 
+            ? `<img src="${v.one.gorsel}" alt="${v.one.baslik}">`
+            : `<div class="color-block"></div>`
+          }
+        </div>
+
+        <div class="featured-content">
+          <span class="post-category">${v.one.kategori}</span>
+          <h2>${v.one.baslik}</h2>
+          <p>${v.one.aciklama}</p>
+
+          <div class="tags">
+            ${(v.one.etiketler||[]).map(t=>`<span class="tag">${t}</span>`).join('')}
+          </div>
+
+          ${v.one.linkMetin ? `<a class="read-more">${v.one.linkMetin}
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M2 7h10M8 3l4 4-4 4"/></svg></a>` : ''}
+
+          <div class="post-meta" style="margin-top:1.5rem;">
+            <span class="author">${v.one.yazar}</span>
+            <span class="dot"></span>
+            <span>${v.one.tarih}</span>
+            ${v.one.sure ? `<span class="dot"></span><span>${v.one.sure}</span>` : ''}
+          </div>
+        </div>
+      </div>
+    </section>` : '';
+
+    const kartlarHTML = v.kartlar.map((k, i) => {
+      const renkler = ['c1','c2','c3','c4','c5','c6'];
+      const renk = k.renk || renkler[i % renkler.length];
+      return `<article class="post-card">
+        <div class="post-card-img">
+  ${k.gorsel 
+    ? `<img src="${k.gorsel}" alt="${k.baslik}">`
+    : `<div class="color-block ${renk}"></div>`
+  }
+</div>
+        <span class="post-category">${k.kategori}</span>
+        <h3>${k.baslik}</h3>
+        <p>${k.aciklama}</p>
+        <div class="post-meta">
+          <span class="author">${k.yazar}</span>
+          <span class="dot"></span>
+          <span>${k.tarih}</span>
+          ${k.sure ? `<span class="dot"></span><span>${k.sure}</span>` : ''}
+        </div>
+      </article>`;
+    }).join('');
+
+    return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
+      + oneItemHTML
+      + `<section class="posts-section">
+          <div class="posts-header">
+            <div class="section-title" style="margin-bottom:0">${v.altBaslik || 'Tüm Etkinlikler'}</div>
+          </div>
+          <div class="posts-grid">${kartlarHTML}</div>
+        </section>`
+      + footer(ICERIK.site.telif, [
+          { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
+          { onclick: "showPage('basvuru')", yazi: 'Başvuru' },
+        ]);
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active', 'fade-in'));
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    const target = document.getElementById('page-' + name);
+    target.classList.add('active');
+    requestAnimationFrame(() => requestAnimationFrame(() => target.classList.add('fade-in')));
+    const navLink = document.getElementById('nav-' + name);
+    if (navLink) navLink.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function showHakkinda(tab) {
+    showPage('hakkinda');
+    switchHakkindaTab(tab);
+  }
+
+  function switchHakkindaTab(tab) {
+    document.querySelectorAll('.hakkinda-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.hakkinda-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.hakkinda-tab').forEach(t => {
+      if (t.getAttribute('onclick') && t.getAttribute('onclick').includes(tab)) t.classList.add('active');
+    });
+    const panel = document.getElementById('panel-' + tab);
+    if (panel) panel.classList.add('active');
+  }
+
+  function scrollToRule(id) {
+    switchHakkindaTab('kurallar');
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  }
+
+  // ── Başlangıç ─────────────────────────────────────────
+
+  document.getElementById('site-adi').textContent = ICERIK.site.ad;
+  document.getElementById('page-basvuru').innerHTML   = renderBasvuru();
+  document.getElementById('page-duyurular').innerHTML = renderDuyurular();
+  document.getElementById('page-etkinlikler').innerHTML = renderEtkinlikler();
+  document.getElementById('page-hakkinda').innerHTML  = renderHakkinda();
+  document.getElementById('page-iletisim').innerHTML  = renderIletisim();
+
+  showPage('etkinlikler'); // ← Varsayılan açılış sayfası: Etkinlikler
+  </script>
+  <script>
+  // Menü aç/kapa
+  function toggleMenu(){
+    document.querySelector("nav").classList.toggle("show");
+  }
+
+  // Menü linklerine tıklanınca mobil menüyü kapatma
+  const navLinks = document.querySelectorAll("nav a");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      const nav = document.querySelector("nav");
+      if (nav.classList.contains("show")) {
+        nav.classList.remove("show");
+      }
+    });
+  });
+</script>
+</body>
+</html>
