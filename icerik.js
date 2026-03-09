@@ -60,7 +60,7 @@ const ICERIK = {
       {
         tip:    "etkinlik",
         tarih:  "Yakında",
-        baslik: "Nicovision Kitap Seçimi — Yeni Dönem",
+        baslik: "Salection Kitap Seçimi — Yeni Dönem",
         metin:  "Yeni okuma döneminin kitap seçim süreci yakında başlıyor. Öneri ve puanlama tarihleri duyurulacaktır.",
       },
       {
@@ -80,7 +80,7 @@ const ICERIK = {
 
     genelBilgi: [
       "Düşünseli Kitap Kulübü, ortak kitap okumaları yapmak ve bu kitaplar üzerine fiziksel mekânlarda fikir paylaşımında bulunmak amacıyla kurulmuştur.",
-      "Her dönem <strong>Nicovision Kitap Seçimi</strong> yöntemiyle belirlenen üç kitabı birlikte okuyoruz. Üyeler kitapları önerir, puanlar ve en çok oyu alan kitapları birlikte tartışmak üzere bir araya gelir.",
+      "Her dönem <strong>Salection Kitap Seçimi</strong> yöntemiyle belirlenen üç kitabı birlikte okuyoruz. Üyeler kitapları önerir, puanlar ve en çok oyu alan kitapları birlikte tartışmak üzere bir araya gelir.",
       "Kulübün temel iletişim platformu WhatsApp gruplarıdır. Üyelik üç kategoriden oluşur: <strong>Lobi Üyeleri</strong>, <strong>Salon Üyeleri</strong> ve kulübü yöneten <strong>MODS</strong>.",
     ],
   },
@@ -107,14 +107,14 @@ const ICERIK = {
           { tip: "paragraf", metin: "<strong>B1.</strong> Okumalar yaklaşık olarak ayda bir kitap okunacak şekilde planlanır; bu süre değişiklik gösterebilir." },
           { tip: "paragraf", metin: "<strong>B2.</strong> Üyelerden toplantılara ilgili kitabı okumuş olarak katılması beklenir. Kitabı tamamlayamayan üyelerin en az %70'ini okumuş olması beklenir. İlk kez katılan üyeler için bu şart göz ardı edilebilir." },
           { tip: "paragraf", metin: "<strong>B3.</strong> Toplantılar, olağanüstü haller dışında fiziksel mekânlarda gerçekleştirilir." },
-          { tip: "paragraf", metin: "<strong>B4.</strong> Okunacak kitaplar, üyelerin önerileri doğrultusunda <strong>Nicovision Kitap Seçimi</strong> yöntemiyle belirlenir. Bir okuma dönemi üç kitaptan oluşur." },
+          { tip: "paragraf", metin: "<strong>B4.</strong> Okunacak kitaplar, üyelerin önerileri doğrultusunda <strong>Salection Kitap Seçimi</strong> yöntemiyle belirlenir. Bir okuma dönemi üç kitaptan oluşur." },
 
           {
             tip: "altbolum",
-            etiket: "B5 — Nicovision Kitap Seçimi",
+            etiket: "B5 — Salection Kitap Seçimi",
             icerik: [
-              { tip: "paragraf", metin: "<strong>B5.1.</strong> Nicovision; Eurovision kelimesinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir. Puanlama sistemi Eurovision Şarkı Yarışması'ndan devşirilmiştir." },
-              { tip: "paragraf", metin: "<strong>B5.2.</strong> Nicovision Kitap Seçimi, aday önerme ve puanlama süreçlerinden oluşur. Öneri hakkına sahip olanlara <strong>\"önermen\"</strong>, puanlama hakkına sahip olanlara <strong>\"puantör\"</strong> denir." },
+              { tip: "paragraf", metin: "<strong>B5.1.</strong> Salection; Salihli ve İngilizce seçim anlamına gelen election kelimelerinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir." },
+              { tip: "paragraf", metin: "<strong>B5.2.</strong> Salection Kitap Seçimi, aday önerme ve puanlama süreçlerinden oluşur. Öneri hakkına sahip olanlara <strong>\"önermen\"</strong>, puanlama hakkına sahip olanlara <strong>\"puantör\"</strong> denir." },
               { tip: "paragraf", metin: "<strong>B5.3.</strong> Aday önerme ve puanlama süreçlerine katılım hakları, kitap toplantılarına katılım şartına bağlıdır." },
               { tip: "paragraf", metin: "<strong>B5.4.</strong> Önermen sayısına göre her önermen şu kadar kitap önerir:" },
               {
