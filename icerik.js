@@ -284,8 +284,7 @@ const ICERIK = {
       linkMetin: "Detaylar",
       yazar:     "MODS",
       tarih:     "Nisan 2026",
-      sure:      "",
-      gorsel:   "assets/Etkinlikler/reeding.png",
+      gorsel:   "assets/etkinlikler/read.png",
     },
 
     // Etkinlik kartları — yeni eklemek için listeye obje ekleyin
