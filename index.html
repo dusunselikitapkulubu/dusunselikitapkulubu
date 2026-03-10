@@ -130,7 +130,7 @@
     @media (max-width: 700px) { .featured-card { grid-template-columns: 1fr; gap: 2rem; } }
     .featured-img { aspect-ratio: 4/3; background: linear-gradient(135deg, #E8E0D5 0%, #D5C9B8 100%); border-radius: 4px; position: relative; overflow: hidden; }
     .featured-img::after { content: ''; position: absolute; inset: 0; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='20' fill='none' stroke='%23C8A882' stroke-width='0.5' opacity='0.4'/%3E%3C/svg%3E") center/60px repeat; }
-    .featured-img img{ width:100%; height:100%; object-fit:cover; }
+    .featured-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
     .post-category { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
     .featured-content h2 { font-family: var(--serif); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 400; line-height: 1.2; letter-spacing: -0.015em; margin-bottom: 1rem; transition: color 0.2s; }
     .featured-content h2:hover { color: var(--accent); }
