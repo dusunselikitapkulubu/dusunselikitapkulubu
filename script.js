@@ -66,12 +66,16 @@ function renderBasvuru() {
       ? `<div class="basvuru-badge">${v.rozet}</div>` : '',
 
     kosullar: v.kosullar && v.kosullar.length
-      ? `<div class="basvuru-kosullar">${v.kosullar.map(k => `<p>${k}</p>`).join('')}</div>` : '',
+      ? `<div class="basvuru-kosullar">${v.kosullar
+          .filter(k => !(typeof k === 'object' && k.gizli))
+          .map(k => `<p>${typeof k === 'string' ? k : k.metin}</p>`).join('')}</div>` : '',
 
     kartlar: v.uyelikGruplari && v.uyelikGruplari.length
-      ? `<div class="uyelik-kartlari">${v.uyelikGruplari.map(g => {
+      ? `<div class="uyelik-kartlari">${v.uyelikGruplari.filter(g => !g.gizli).map(g => {
           const icerik = g.maddeler
-            ? `<ul class="uyelik-maddeler">${g.maddeler.map(m => `<li>${m}</li>`).join('')}</ul>`
+            ? `<ul class="uyelik-maddeler">${g.maddeler
+                .filter(m => !(typeof m === 'object' && m.gizli))
+                .map(m => `<li>${typeof m === 'string' ? m : m.metin}</li>`).join('')}</ul>`
             : `<p>${g.aciklama}</p>`;
           return `<div class="uyelik-kart"><h3>${g.emoji} ${g.ad}</h3>${icerik}</div>`;
         }).join('')}</div>` : '',
@@ -99,7 +103,7 @@ function renderBasvuru() {
 function renderDuyurular() {
   const v = ICERIK.duyurular;
 
-  const duyuruHTML = v.liste.map(d => `
+  const duyuruHTML = v.liste.filter(d => !d.gizli).map(d => `
     <div class="duyuru-item">
       <div class="duyuru-meta">
         <span class="duyuru-badge-type ${d.tip === 'yeni' ? 'yeni' : ''}">${d.tip.charAt(0).toUpperCase() + d.tip.slice(1)}</span>
@@ -123,12 +127,12 @@ function renderHakkinda() {
   const kr = ICERIK.kurallar;
 
   // İçindekiler
-  const tocLinks = kr.bolumler.map((b, i) =>
+  const tocLinks = kr.bolumler.filter(b => !b.gizli).map((b, i) =>
     `<a onclick="scrollToRule('${b.id}')">${i + 1} — ${b.baslik}</a>`
   ).join('');
 
   // Kural bölümleri
-  const bolumlerHTML = kr.bolumler.map((b, i) => `
+  const bolumlerHTML = kr.bolumler.filter(b => !b.gizli).map((b, i) => `
     <div class="rule-chapter" id="${b.id}">
       <div class="chapter-header">
         <span class="chapter-letter">${b.harf}</span>
@@ -219,7 +223,7 @@ function renderEtkinlikler() {
     </section>` : '';
 
   const renkler = ['c1','c2','c3','c4','c5','c6'];
-  const kartlarHTML = v.kartlar.map((k, i) => {
+  const kartlarHTML = v.kartlar.filter(k => !k.gizli).map((k, i) => {
     const renk = k.renk || renkler[i % renkler.length];
     return `<article class="post-card">
       <div class="post-card-img">
@@ -255,7 +259,7 @@ function renderEtkinlikler() {
 function renderIletisim() {
   const v = ICERIK.iletisim;
 
-  const kartHTML = v.kartlar.map(k => `
+  const kartHTML = v.kartlar.filter(k => !k.gizli).map(k => `
     <div class="iletisim-card">
       <div class="ic-label">${k.etiket}</div>
       <div class="ic-value">${k.link ? `<a href="${k.link}" target="_blank">${k.deger}</a>` : k.deger}</div>
