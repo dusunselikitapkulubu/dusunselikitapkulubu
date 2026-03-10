@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Düşünseli Kitap Kulübü</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a class="logo" onclick="showPage('etkinlikler')">
+      <img src="assets/logo/logo.png" alt="Düşünseli Kitap Kulübü" class="logo-img" />
+      <span id="site-adi"></span><span>.</span>
+    </a>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav>
+      <a onclick="showPage('basvuru')"    id="nav-basvuru">Başvuru</a>
+      <a onclick="showPage('duyurular')"  id="nav-duyurular">Duyurular</a>
+      <div class="nav-dropdown">
+        <a id="nav-hakkinda">Kulüp Hakkında</a>
+        <div class="dropdown-menu">
+          <a onclick="showHakkinda('genel')">Genel Bilgi</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="showHakkinda('kurallar')">Kulüp Kuralları</a>
+          <div class="dropdown-divider"></div>
+          <a onclick="showHakkinda('sss')">Sıkça Sorulan Sorular</a>
+        </div>
+      </div>
+      <a onclick="showPage('etkinlikler')" id="nav-etkinlikler">Etkinlikler</a>
+      <a onclick="showPage('iletisim')"    id="nav-iletisim">İletişim</a>
+    </nav>
+  </header>
+
+  <div id="page-basvuru"     class="page"></div>
+  <div id="page-duyurular"   class="page"></div>
+  <div id="page-etkinlikler" class="page"></div>
+  <div id="page-hakkinda"    class="page"></div>
+  <div id="page-iletisim"    class="page"></div>
+
+  <script src="icerik.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
