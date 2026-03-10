@@ -63,11 +63,12 @@ function renderBasvuru() {
   const rozetHTML = v.rozet
     ? `<div class="basvuru-badge">${v.rozet}</div>` : '';
 
-  const kartlarHTML = (v.uyelikGruplari || []).map(g => `
-    <div class="uyelik-kart">
-      <h3>${g.emoji} ${g.ad}</h3>
-      <p>${g.aciklama}</p>
-    </div>`).join('');
+  const kartlarHTML = (v.uyelikGruplari || []).map(g => {
+    const icerik = g.maddeler
+      ? `<ul class="uyelik-maddeler">${g.maddeler.map(m => `<li>${m}</li>`).join('')}</ul>`
+      : `<p>${g.aciklama}</p>`;
+    return `<div class="uyelik-kart"><h3>${g.emoji} ${g.ad}</h3>${icerik}</div>`;
+  }).join('');
 
   const kosullarHTML = (v.kosullar || []).map(k => `<p>${k}</p>`).join('');
 

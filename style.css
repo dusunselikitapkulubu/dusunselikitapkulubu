@@ -160,6 +160,18 @@ nav a.active { color: var(--accent); }
 .uyelik-kart:hover { border-color: var(--accent); }
 .uyelik-kart h3 { font-family: var(--serif); font-size: 1rem; font-weight: 400; margin-bottom: 0.6rem; }
 .uyelik-kart p  { font-size: 0.875rem; line-height: 1.7; color: var(--muted); }
+.uyelik-maddeler {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: 0.55rem;
+}
+.uyelik-maddeler li {
+  font-size: 0.875rem; line-height: 1.65; color: var(--muted);
+  padding-left: 1.1rem; position: relative;
+}
+.uyelik-maddeler li::before {
+  content: '—'; position: absolute; left: 0;
+  color: var(--accent); font-size: 0.75rem; top: 0.15em;
+}
 .basvuru-kosullar { margin-bottom: 2rem; }
 .basvuru-kosullar p { font-size: 0.95rem; line-height: 1.8; color: var(--muted); margin-bottom: 0.6rem; }
 .basvuru-kosullar p:last-child { margin-bottom: 0; }

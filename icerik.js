@@ -29,7 +29,12 @@ const ICERIK = {
       {
         emoji:    "🟡",
         ad:       "Lobi",
-        aciklama: "Lobi Üyeleri, başvuru formunu doldurmuş, başvurusu onaylanmış fakat Salon Üyesi olma şartını henüz sağlayamamış katılımcılardan ve katılım şartını sağlamadığı için mevcut Salon Üyeliği, Lobi Üyeliğine düşürülmüş katılımcılardan oluşur. Başka bir deyişle, kulübe katılan her yeni üye Lobi grubundan kulübe giriş yapar. Katılım durumuna göre Salon grubuna geçebilir.Lobide kalma süresi azami 3 aydır. Lobiye alındıktan itibaren 3 ay içerisinde herhangi bir okumaya katılmayan üye lobiden çıkarılır. Kendi isteğiyle kulüpten ayrılan üye veya kulüpten devamsızlık sebebiyle çıkarılan üye, tekrar kulübe katılmak isterse, kulüp kurallarında belirtilen tüm başvuru aşamalarını yeniden tamamlamak durumundadır.",
+        maddeler: [
+          "Başvurusu onaylanmış fakat Salon Üyesi olma şartını henüz sağlayamamış katılımcılardan oluşur. Kulübe katılan her yeni üye Lobi grubundan giriş yapar.",
+          "Salon Üyeliği şartını sağlamayan mevcut üyenin üyeliği de Lobi'ye düşürülür.",
+          "Lobide kalma süresi azami <strong>3 aydır</strong>. Bu süre içinde herhangi bir okumaya katılmayan üye lobiden çıkarılır.",
+          "Kendi isteğiyle ayrılan veya devamsızlık sebebiyle çıkarılan üye, tekrar katılmak isterse tüm başvuru aşamalarını yeniden tamamlamak durumundadır.",
+        ],
       },
       {
         emoji:    "🟢",
