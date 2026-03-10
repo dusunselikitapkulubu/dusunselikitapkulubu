@@ -162,8 +162,10 @@ const ICERIK = {
           { tip: "paragraf", metin: "<strong>A2.</strong> Üyelerden toplantılara ilgili kitabı okumuş olarak katılması beklenir. Kitabı tamamlayamayan üyelerin en az %70'ini okumuş olması beklenir. İlk kez katılan üyeler için bu şart göz ardı edilebilir." },
           { tip: "paragraf", metin: "<strong>A3.</strong> Toplantılar, olağanüstü haller dışında fiziksel mekânlarda gerçekleştirilir." },
           { tip: "paragraf", metin: "<strong>A4.</strong> Okunacak kitaplar, üyelerin önerileri doğrultusunda <strong>Salection Kitap Seçimi</strong> yöntemiyle belirlenir. Bir okuma dönemi üç kitaptan oluşur." },
-
-          {
+        ],
+        },
+      
+      {
         id:     "bolum-b",
         harf:   "B",
         baslik: "Salection Kitap Seçimi",
@@ -192,41 +194,8 @@ const ICERIK = {
               { tip: "paragraf", metin: "<strong>B9.</strong> Her puantör aşağıdaki puanları dağıtır. Her puan yalnızca bir kitaba verilebilir; tüm puanların dağıtılması zorunludur:" },
               { tip: "puanlar", puanlar: [1, 2, 3, 4, 5, 6, 7, 8, 10, 12] },
               { tip: "paragraf", metin: "<strong>B10. Eşitlik Durumu:</strong> İlk üç kitap belirlenemeyecek şekilde eşitlik oluşması halinde sırasıyla şu adımlar izlenir: tam puan (12) sayısı → 10 puan sayısı → önermenin geçmişteki seçilme sayısı → yazarın kulüpte okunma sayısı → özgün ilk basım yılı → yazarın soyadının alfabetik sırası." },
-        ],
-      },
-          
-          {
-            gizli:true,
-            tip:    "altbolum",
-            etiket: "A5 — Salection Kitap Seçimi",
-            icerik: [
-              { tip: "paragraf", metin: "<strong>A5.1.</strong> Salection; Salihli ve İngilizce seçim anlamına gelen election kelimelerinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir." },
-              { tip: "paragraf", metin: "<strong>A5.2.</strong> Salection Kitap Seçimi, aday önerme ve puanlama süreçlerinden oluşur. Öneri hakkına sahip olanlara <strong>\"önermen\"</strong>, puanlama hakkına sahip olanlara <strong>\"puantör\"</strong> denir." },
-              { tip: "paragraf", metin: "<strong>A5.3.</strong> Aday önerme ve puanlama süreçlerine katılım hakları, kitap toplantılarına katılım şartına bağlıdır." },
-              { tip: "paragraf", metin: "<strong>A5.4.</strong> Önermen sayısına göre her önermen şu kadar kitap önerir:" },
-              {
-                tip:       "tablo",
-                basliklar: ["Önermen Sayısı", "Önerilebilecek Kitap Sayısı"],
-                satirlar: [
-                  ["2 önermen",     "Her biri 6 kitap"],
-                  ["3 önermen",     "Her biri 4 kitap"],
-                  ["4–5 önermen",   "Her biri 3 kitap"],
-                  ["6–12 önermen",  "Her biri 2 kitap"],
-                  ["13–24 önermen", "Her biri 1 kitap"],
-                  ["24'ten fazla",  "Her biri 1 kitap; kura ile 24 aday belirlenir"],
-                ],
-              },
-              { tip: "paragraf", metin: "<strong>A5.5.</strong> Aday sayısı 10'a ulaşmamışsa, MODS eksik adayları önceki seçimlerde önerilmiş fakat seçilmemiş kitaplardan tamamlar." },
-              { tip: "paragraf", metin: "<strong>A5.6.</strong> Önermenler, aday önerme süresi içinde önerdikleri kitapları geri çekebilir veya değiştirebilir. Süre dolduktan sonra adaylar kesinleşir." },
-              { tip: "paragraf", metin: "<strong>A5.7.</strong> Aday önerme süreci açık yapılır. Aynı kitap farklı önermenler tarafından önerilirse ilk öneren önermenin önerisi olarak kayıt edilir. Kulüpte daha önce okunmuş bir kitap, okuma tarihinin üzerinden 5 tam yıl geçmeden yeniden önerilemez." },
-              { tip: "paragraf", metin: "<strong>A5.8.</strong> Puanlama gizli ve kapalı yapılır. Süreç tamamlandıktan sonra sonuç tablosu paylaşılır. Süreç devam ederken oy bilgilerini açıklamak veya ima etmek yasaktır." },
-              { tip: "paragraf", metin: "<strong>A5.9.</strong> Her puantör aşağıdaki puanları dağıtır. Her puan yalnızca bir kitaba verilebilir; tüm puanların dağıtılması zorunludur:" },
-              { tip: "puanlar", puanlar: [1, 2, 3, 4, 5, 6, 7, 8, 10, 12] },
-              { tip: "paragraf", metin: "<strong>A5.10. Eşitlik Durumu:</strong> İlk üç kitap belirlenemeyecek şekilde eşitlik oluşması halinde sırasıyla şu adımlar izlenir: tam puan (12) sayısı → 10 puan sayısı → önermenin geçmişteki seçilme sayısı → yazarın kulüpte okunma sayısı → özgün ilk basım yılı → yazarın soyadının alfabetik sırası." },
-            ],
-          },
-          { tip: "paragraf", metin: "<strong>A6.</strong> Aday önerme süresi ve puanlama süresi her biri en az 5 tam gündür. Vaktinde girilmeyen adaylar ve puanlar geçersiz sayılır." },
-          { tip: "paragraf", metin: "<strong>A7.</strong> Aday önerme süreci aynı zamanda kitap tanıtım sürecidir. Önermenler kendi ve başkalarının önerilerini destekleyebilir; ancak başkasının önerisi hakkında olumsuz propaganda yapmak yasaktır." },
+              { tip: "paragraf", metin: "<strong>B11.</strong> Aday önerme süresi ve puanlama süresi her biri en az 5 tam gündür. Vaktinde girilmeyen adaylar ve puanlar geçersiz sayılır." },
+              { tip: "paragraf", metin: "<strong>B12.</strong> Aday önerme süreci aynı zamanda kitap tanıtım sürecidir. Önermenler kendi ve başkalarının önerilerini destekleyebilir; ancak başkasının önerisi hakkında olumsuz propaganda yapmak yasaktır." },
         ],
       },
 
