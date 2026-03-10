@@ -81,17 +81,12 @@ const ICERIK = {
 
     // tip: "yeni" | "etkinlik" | "bilgi"
     liste: [
-      {
-        tip:    "yeni",
-        tarih:  "Yakında",
-        baslik: "Salection Kitap Seçimi — Yeni Dönem",
-        metin:  "Yeni okuma döneminin kitap seçim süreci yakında başlıyor. Öneri ve puanlama tarihleri duyurulacaktır.",
-      },
+      
       {
         tip:    "bilgi",
         tarih:  "Süregelen",
         baslik: "Başvuru Formu Bilgisi",
-        metin:  "Kulübe katılmak isteyenler için başvuru formu hazırlanmaktadır. Form hazır olduğunda bu sayfadan ve Instagram hesabımızdan duyurulacaktır.",
+        metin:  "Kulübe katılmak isteyenler için başvuru formu hazırlandı. Forma başvuru sayfasından ulaşabilirsiniz.",
       },
       {
         tip:    "bilgi",
@@ -198,20 +193,25 @@ const ICERIK = {
           },
           { tip: "paragraf", metin: "<strong>A6.</strong> Aday önerme süresi ve puanlama süresi her biri en az 5 tam gündür. Vaktinde girilmeyen adaylar ve puanlar geçersiz sayılır." },
           { tip: "paragraf", metin: "<strong>A7.</strong> Aday önerme süreci aynı zamanda kitap tanıtım sürecidir. Önermenler kendi ve başkalarının önerilerini destekleyebilir; ancak başkasının önerisi hakkında olumsuz propaganda yapmak yasaktır." },
-          {
-            tip:    "altbolum",
-            etiket: "A8 — Okuma Toplantıları",
-            icerik: [
-              { tip: "paragraf", metin: "<strong>B8.1.</strong> Kitabı öneren üye, o toplantının doğal okuma moderatörüdür. Oturumun zamanlamasını ve içeriğini belirler, süreci yönetir ve katılımcıları önceden bilgilendirir." },
-              { tip: "paragraf", metin: "<strong>B8.2.</strong> Okuma moderatörü, söz hakkının dengeli ve adil dağıtılmasını gözetir; tartışmanın kitap ekseninde kalmasını sağlar." },
-              { tip: "paragraf", metin: "<strong>B8.3.</strong> Her katılımcı, diğer üyelerin görüşlerine saygılı olmak ve yapıcı bir iletişim ortamını desteklemekle yükümlüdür." },
-              { tip: "paragraf", metin: "<strong>B8.4.</strong> Kendi önerdiği kitabın toplantısına katılmayan üyenin elde ettiği ilk öneri hakkı elinden alınır." },
-            ],
-          },
         ],
       },
-      
+
       {
+        gizli:true,
+        id:     "bolum-b",
+        harf:   "B",
+        baslik: "Okuma Toplantıları",
+        icerik: [
+          { tip: "paragraf", metin: "<strong>B1.</strong> Kitabı öneren üye, o toplantının doğal okuma moderatörüdür. Oturumun zamanlamasını ve içeriğini belirler, süreci yönetir ve katılımcıları önceden bilgilendirir." },
+          { tip: "paragraf", metin: "<strong>B2.</strong> Okuma moderatörü, söz hakkının dengeli ve adil dağıtılmasını gözetir; tartışmanın kitap ekseninde kalmasını sağlar." },
+          { tip: "paragraf", metin: "<strong>B3.</strong> Her katılımcı, diğer üyelerin görüşlerine saygılı olmak ve yapıcı bir iletişim ortamını desteklemekle yükümlüdür." },
+          { tip: "paragraf", metin: "<strong>B4.</strong> Kendi önerdiği kitabın toplantısına katılmayan üyenin elde ettiği ilk öneri hakkı elinden alınır." },
+        ],
+      },
+
+      //İÇERİK GİZLENDİ.
+      {
+        gizli:true,
         id:     "bolum-b",
         harf:   "B",
         baslik: "Kulüp Yönetimi (MODS) ve Seçimler",
@@ -224,7 +224,9 @@ const ICERIK = {
         ],
       },
 
+      //İÇERİK GİZLENDİ.
       {
+        gizli:true,
         id:     "bolum-c",
         harf:   "C",
         baslik: "Ek Etkinlikler ve Yönetmen Sineması",
@@ -270,18 +272,20 @@ const ICERIK = {
     one: {
       kategori:  "Kitap Toplantısı",
       baslik:    "Nisan Okuma Toplantısı",
-      aciklama:  "Bu ayki kitabımızı tartışmak üzere bir araya geliyoruz. Kitabı en az %70 okumuş olarak katılmanız beklenmektedir.",
-      etiketler: ["Okuma", "Tartışma", "Salon Üyeleri"],
+      aciklama:  "Nisan ayında seçilecek kitabımızı tartışmak üzere bir araya geliyoruz. Okunacak kitap duyurulacak...",
+      etiketler: ["Okuma", "Tartışma","Etkinlik"],
       linkMetin: "Detaylar",    // Boş bırakılırsa buton gösterilmez
       yazar:     "MODS",
       tarih:     "Nisan 2026",
       sure:      "",
       gorsel:    "assets/etkinlikler/read.png",   // Boş bırakılırsa renkli arka plan gösterilir
     },
-
+    
+    //İÇERİKLER "GİZLİ:TRUE" KOMUTUYLA GİZLENDİ. 
     // Etkinlik kartları. renk: "c1"..."c6" (boş bırakırsanız otomatik atanır)
     kartlar: [
       {
+        gizli: true,
         kategori: "Salection",
         baslik:   "Yeni Dönem Kitap Seçimi",
         aciklama: "Salection ile bir sonraki dönemin üç kitabını belirliyoruz. Öneri ve puanlama süreci yakında başlıyor.",
@@ -291,6 +295,7 @@ const ICERIK = {
         gorsel:   "assets/etkinlikler/read.png",
       },
       {
+        gizli: true,
         kategori: "Yönetmen Sineması",
         baslik:   "Film Gecesi",
         aciklama: "Seçilen yönetmenin filmlerini birlikte izleyip tartışıyoruz. Yer ve saat duyurulacaktır.",
@@ -300,6 +305,7 @@ const ICERIK = {
         gorsel:   "assets/etkinlikler/read.png",
       },
       {
+        gizli: true,
         kategori: "Sosyal",
         baslik:   "Yıl Sonu Buluşması",
         aciklama: "Yılın son etkinliğinde tüm üyelerle bir araya geliyoruz. Detaylar ilerleyen haftalarda paylaşılacak.",
