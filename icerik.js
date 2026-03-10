@@ -39,7 +39,17 @@ const ICERIK = {
       {
         emoji:    "🟢",
         ad:       "Salon",
-        aciklama: "Kulübün aktif üyelerinden oluşan ana gruptur. Kitap seçimleri ve oylamalar bu grupta yapılır. Katılım puanı sistemiyle üyelik durumu korunur.",
+        maddeler: [
+          "Kulüp okumalarının belirlendiği ve oylamaya sunulan konuların oylama ile karara bağlandığı, kulübün aktif katılımcı üyelerinden oluşan ana gruptur.",
+          "Salon üyesi olmak için aşağıdaki şartlardan en az birini sağlamak gereklidir:", 
+          "1. Üst üste 4 kitap buluşmasına katılmak.",
+          "2. Son 6 kitap buluşmasından en az 20 katılım puanı almak.",
+          "3. Son 10 kitap buluşmasından en az 40 katılım puanı almak.",
+          "4. Mods üyesi olmak.",
+          
+          "Kontrol vakti: Her 5. buluşmadan sonra katılım değerlendirmesi yapılır ve yukarıdaki şartlardan en az birini sağlamayan üyelerin üyelik durumu, Lobi üyeliğine düşürülür. Katılım değerlendirmesi, ilk olarak 15. okumadan sonra yapılacaktır ve sonrasında, her 5 okumada bir olacak şekilde periyodik olarak tekrarlanacaktır.",
+          "Üst üste 3 kitap buluşmasına katılmayan üyeler ise kontrol vaktini beklemeden Lobi grubuna alınır.",
+          ],
       },
       {
         emoji:    "🔵",
