@@ -159,22 +159,22 @@ const ICERIK = {
   kurallar: {
     bolumler: [
       {
-        id:     "bolum-b",
-        harf:   "B",
+        id:     "bolum-a",
+        harf:   "A",
         baslik: "Kulüp Okumaları ve Kitap Seçimi",
         icerik: [
-          { tip: "paragraf", metin: "<strong>B1.</strong> Okumalar yaklaşık olarak ayda bir kitap okunacak şekilde planlanır; bu süre değişiklik gösterebilir." },
-          { tip: "paragraf", metin: "<strong>B2.</strong> Üyelerden toplantılara ilgili kitabı okumuş olarak katılması beklenir. Kitabı tamamlayamayan üyelerin en az %70'ini okumuş olması beklenir. İlk kez katılan üyeler için bu şart göz ardı edilebilir." },
-          { tip: "paragraf", metin: "<strong>B3.</strong> Toplantılar, olağanüstü haller dışında fiziksel mekânlarda gerçekleştirilir." },
-          { tip: "paragraf", metin: "<strong>B4.</strong> Okunacak kitaplar, üyelerin önerileri doğrultusunda <strong>Salection Kitap Seçimi</strong> yöntemiyle belirlenir. Bir okuma dönemi üç kitaptan oluşur." },
+          { tip: "paragraf", metin: "<strong>A1.</strong> Okumalar yaklaşık olarak ayda bir kitap okunacak şekilde planlanır; bu süre değişiklik gösterebilir." },
+          { tip: "paragraf", metin: "<strong>A2.</strong> Üyelerden toplantılara ilgili kitabı okumuş olarak katılması beklenir. Kitabı tamamlayamayan üyelerin en az %70'ini okumuş olması beklenir. İlk kez katılan üyeler için bu şart göz ardı edilebilir." },
+          { tip: "paragraf", metin: "<strong>A3.</strong> Toplantılar, olağanüstü haller dışında fiziksel mekânlarda gerçekleştirilir." },
+          { tip: "paragraf", metin: "<strong>A4.</strong> Okunacak kitaplar, üyelerin önerileri doğrultusunda <strong>Salection Kitap Seçimi</strong> yöntemiyle belirlenir. Bir okuma dönemi üç kitaptan oluşur." },
           {
             tip:    "altbolum",
-            etiket: "B5 — Salection Kitap Seçimi",
+            etiket: "A5 — Salection Kitap Seçimi",
             icerik: [
-              { tip: "paragraf", metin: "<strong>B5.1.</strong> Salection; Salihli ve İngilizce seçim anlamına gelen election kelimelerinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir." },
-              { tip: "paragraf", metin: "<strong>B5.2.</strong> Salection Kitap Seçimi, aday önerme ve puanlama süreçlerinden oluşur. Öneri hakkına sahip olanlara <strong>\"önermen\"</strong>, puanlama hakkına sahip olanlara <strong>\"puantör\"</strong> denir." },
-              { tip: "paragraf", metin: "<strong>B5.3.</strong> Aday önerme ve puanlama süreçlerine katılım hakları, kitap toplantılarına katılım şartına bağlıdır." },
-              { tip: "paragraf", metin: "<strong>B5.4.</strong> Önermen sayısına göre her önermen şu kadar kitap önerir:" },
+              { tip: "paragraf", metin: "<strong>A5.1.</strong> Salection; Salihli ve İngilizce seçim anlamına gelen election kelimelerinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir." },
+              { tip: "paragraf", metin: "<strong>A5.2.</strong> Salection Kitap Seçimi, aday önerme ve puanlama süreçlerinden oluşur. Öneri hakkına sahip olanlara <strong>\"önermen\"</strong>, puanlama hakkına sahip olanlara <strong>\"puantör\"</strong> denir." },
+              { tip: "paragraf", metin: "<strong>A5.3.</strong> Aday önerme ve puanlama süreçlerine katılım hakları, kitap toplantılarına katılım şartına bağlıdır." },
+              { tip: "paragraf", metin: "<strong>A5.4.</strong> Önermen sayısına göre her önermen şu kadar kitap önerir:" },
               {
                 tip:       "tablo",
                 basliklar: ["Önermen Sayısı", "Önerilebilecek Kitap Sayısı"],
@@ -187,20 +187,20 @@ const ICERIK = {
                   ["24'ten fazla",  "Her biri 1 kitap; kura ile 24 aday belirlenir"],
                 ],
               },
-              { tip: "paragraf", metin: "<strong>B5.5.</strong> Aday sayısı 10'a ulaşmamışsa, MODS eksik adayları önceki seçimlerde önerilmiş fakat seçilmemiş kitaplardan tamamlar." },
-              { tip: "paragraf", metin: "<strong>B5.6.</strong> Önermenler, aday önerme süresi içinde önerdikleri kitapları geri çekebilir veya değiştirebilir. Süre dolduktan sonra adaylar kesinleşir." },
-              { tip: "paragraf", metin: "<strong>B5.7.</strong> Aday önerme süreci açık yapılır. Aynı kitap farklı önermenler tarafından önerilirse ilk öneren önermenin önerisi olarak kayıt edilir. Kulüpte daha önce okunmuş bir kitap, okuma tarihinin üzerinden 5 tam yıl geçmeden yeniden önerilemez." },
-              { tip: "paragraf", metin: "<strong>B5.8.</strong> Puanlama gizli ve kapalı yapılır. Süreç tamamlandıktan sonra sonuç tablosu paylaşılır. Süreç devam ederken oy bilgilerini açıklamak veya ima etmek yasaktır." },
-              { tip: "paragraf", metin: "<strong>B5.9.</strong> Her puantör aşağıdaki puanları dağıtır. Her puan yalnızca bir kitaba verilebilir; tüm puanların dağıtılması zorunludur:" },
+              { tip: "paragraf", metin: "<strong>A5.5.</strong> Aday sayısı 10'a ulaşmamışsa, MODS eksik adayları önceki seçimlerde önerilmiş fakat seçilmemiş kitaplardan tamamlar." },
+              { tip: "paragraf", metin: "<strong>A5.6.</strong> Önermenler, aday önerme süresi içinde önerdikleri kitapları geri çekebilir veya değiştirebilir. Süre dolduktan sonra adaylar kesinleşir." },
+              { tip: "paragraf", metin: "<strong>A5.7.</strong> Aday önerme süreci açık yapılır. Aynı kitap farklı önermenler tarafından önerilirse ilk öneren önermenin önerisi olarak kayıt edilir. Kulüpte daha önce okunmuş bir kitap, okuma tarihinin üzerinden 5 tam yıl geçmeden yeniden önerilemez." },
+              { tip: "paragraf", metin: "<strong>A5.8.</strong> Puanlama gizli ve kapalı yapılır. Süreç tamamlandıktan sonra sonuç tablosu paylaşılır. Süreç devam ederken oy bilgilerini açıklamak veya ima etmek yasaktır." },
+              { tip: "paragraf", metin: "<strong>A5.9.</strong> Her puantör aşağıdaki puanları dağıtır. Her puan yalnızca bir kitaba verilebilir; tüm puanların dağıtılması zorunludur:" },
               { tip: "puanlar", puanlar: [1, 2, 3, 4, 5, 6, 7, 8, 10, 12] },
-              { tip: "paragraf", metin: "<strong>B5.10. Eşitlik Durumu:</strong> İlk üç kitap belirlenemeyecek şekilde eşitlik oluşması halinde sırasıyla şu adımlar izlenir: tam puan (12) sayısı → 10 puan sayısı → önermenin geçmişteki seçilme sayısı → yazarın kulüpte okunma sayısı → özgün ilk basım yılı → yazarın soyadının alfabetik sırası." },
+              { tip: "paragraf", metin: "<strong>A5.10. Eşitlik Durumu:</strong> İlk üç kitap belirlenemeyecek şekilde eşitlik oluşması halinde sırasıyla şu adımlar izlenir: tam puan (12) sayısı → 10 puan sayısı → önermenin geçmişteki seçilme sayısı → yazarın kulüpte okunma sayısı → özgün ilk basım yılı → yazarın soyadının alfabetik sırası." },
             ],
           },
-          { tip: "paragraf", metin: "<strong>B6.</strong> Aday önerme süresi ve puanlama süresi her biri en az 5 tam gündür. Vaktinde girilmeyen adaylar ve puanlar geçersiz sayılır." },
-          { tip: "paragraf", metin: "<strong>B7.</strong> Aday önerme süreci aynı zamanda kitap tanıtım sürecidir. Önermenler kendi ve başkalarının önerilerini destekleyebilir; ancak başkasının önerisi hakkında olumsuz propaganda yapmak yasaktır." },
+          { tip: "paragraf", metin: "<strong>A6.</strong> Aday önerme süresi ve puanlama süresi her biri en az 5 tam gündür. Vaktinde girilmeyen adaylar ve puanlar geçersiz sayılır." },
+          { tip: "paragraf", metin: "<strong>A7.</strong> Aday önerme süreci aynı zamanda kitap tanıtım sürecidir. Önermenler kendi ve başkalarının önerilerini destekleyebilir; ancak başkasının önerisi hakkında olumsuz propaganda yapmak yasaktır." },
           {
             tip:    "altbolum",
-            etiket: "B8 — Okuma Toplantıları",
+            etiket: "A8 — Okuma Toplantıları",
             icerik: [
               { tip: "paragraf", metin: "<strong>B8.1.</strong> Kitabı öneren üye, o toplantının doğal okuma moderatörüdür. Oturumun zamanlamasını ve içeriğini belirler, süreci yönetir ve katılımcıları önceden bilgilendirir." },
               { tip: "paragraf", metin: "<strong>B8.2.</strong> Okuma moderatörü, söz hakkının dengeli ve adil dağıtılmasını gözetir; tartışmanın kitap ekseninde kalmasını sağlar." },
@@ -210,70 +210,7 @@ const ICERIK = {
           },
         ],
       },
-
-      {
-        id:     "bolum-c",
-        harf:   "C",
-        baslik: "Üyelik Grupları ve Katılım",
-        icerik: [
-          { tip: "paragraf", metin: "<strong>C1.</strong> Kulübe üyelik başvurusu başvuru formu aracılığıyla yapılır. Reel ortamlarda yüz yüze yapılan buluşmalara katılabilmek için başvuru formunun doldurulması zorunludur." },
-          { tip: "paragraf", metin: "<strong>C1.2.</strong> Kulübe yeni katılan üyelerden katılım bedeli alınır; ancak bu bedel kulübün belirlediği STK'lardan birine bağış olarak yapılır. Bağış dekontu MODS'a iletilmelidir; aksi takdirde başvuru geçersiz sayılır." },
-          { tip: "paragraf", metin: "<strong>C2.</strong> Başvurular MODS tarafından incelenir ve uygun kontenjan bulunması halinde başvuru sahibi iletişim gruplarına eklenir. Güncel kulüp kontenjanı maksimum <strong>70 kişidir</strong>." },
-          { tip: "paragraf", metin: "<strong>C3.</strong> Başvuru formu kulübün politikalarına göre MODS tarafından belirli dönemlerde kapatılıp açılabilir." },
-          { tip: "paragraf", metin: "<strong>C4.</strong> Kulüpte üç farklı üyelik grubu vardır: <strong>Lobi</strong>, <strong>Salon</strong> ve <strong>MODS</strong>." },
-          { tip: "paragraf", metin: "<strong>C5.</strong> Her üyelik grubu için ayrı bir WhatsApp iletişim grubu bulunur. Kulübün temel iletişim platformu bu gruplardır." },
-          {
-            tip:    "altbolum",
-            etiket: "C6 — Lobi Üyeleri",
-            icerik: [
-              { tip: "paragraf", metin: "Kulübe yeni katılan tüm üyeler başlangıçta Lobi grubuna dahil edilir. Lobide kalma süresi en fazla <strong>3 aydır</strong>." },
-              { tip: "paragraf", metin: "Bu süre içinde herhangi bir okumaya katılmayan üyeler lobiden çıkarılır. Tekrar katılmak isteyen üyenin tüm başvuru sürecini yeniden tamamlaması gerekir." },
-            ],
-          },
-          {
-            tip:    "altbolum",
-            etiket: "C7 — Salon Üyeleri",
-            icerik: [
-              { tip: "paragraf", metin: "Kulübün aktif katılımcı üyelerinden oluşan ana gruptur. Salon üyesi olabilmek için aşağıdaki şartlardan <strong>en az birini</strong> sağlamak gerekir:" },
-              {
-                tip:       "tablo",
-                basliklar: ["Şart", "Açıklama"],
-                satirlar: [
-                  ["(a)", "Üst üste 4 kitap buluşmasına katılmak"],
-                  ["(b)", "Son 6 buluşmadan en az 20 katılım puanı almak"],
-                  ["(c)", "Son 10 buluşmadan en az 40 katılım puanı almak"],
-                  ["(d)", "MODS üyesi olmak"],
-                ],
-              },
-              { tip: "paragraf", metin: "Her 5. buluşmadan sonra katılım değerlendirmesi yapılır. Şartları sağlamayan üyelerin üyeliği Lobi'ye düşürülür. Üst üste <strong>3 buluşmaya katılmayan</strong> üyeler değerlendirmeyi beklemeden Lobi'ye alınır." },
-            ],
-          },
-          {
-            tip:    "altbolum",
-            etiket: "C8 — MODS Üyeleri",
-            icerik: [
-              { tip: "paragraf", metin: "Kulüp moderatörleri; kural koyma, uygulama ve kulübün genel yönetiminden sorumludur." },
-            ],
-          },
-          {
-            tip:    "altbolum",
-            etiket: "C9 — Katılım Puanları",
-            icerik: [
-              {
-                tip:       "tablo",
-                basliklar: ["Etkinlik", "Tam Katılım", "En Az Yarısına Katılım"],
-                satirlar: [
-                  ["Kitap: Ana Okuma",  "5 puan", "2,5 puan"],
-                  ["Kitap: Crime Club", "3 puan", "1,5 puan"],
-                  ["Yönetmen Sineması", "3 puan", "1,5 puan"],
-                ],
-              },
-              { tip: "paragraf", metin: "10 kişiden az katılımlı etkinliklerde tam katılım sağlayanlara <strong>+1 bonus puan</strong> verilir." },
-            ],
-          },
-        ],
-      },
-
+      
       {
         id:     "bolum-d",
         harf:   "D",
