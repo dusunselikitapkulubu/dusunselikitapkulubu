@@ -28,11 +28,9 @@ const ICERIK = {
     kosullar: [
       "<strong>I.</strong> Kulübe üyelik başvurusu başvuru formu aracılığıyla yapılır. Reel ortamlarda yüz yüze yapılan buluşmalara katılabilmek ve kulüp üyesi olabilmek için başvuru formunun doldurulması gereklidir.",
       "<strong>Başvuru formu:</strong> <a href='https://forms.gle/nJgkm3nTqjuS7SAQ7' target='_blank'>forms.gle/nJgkm3nTqjuS7SAQ7</a>",
-      "<strong>II.</strong> Kulübe yeni katılan üyelerden katılım bedeli alınır; ancak bu bedel kulübün hesabına değil, kulübün belirlediği STK'lardan birine bağış olarak yapılır. Bağış dekontu MODS'a iletilmelidir; aksi takdirde başvuru geçersiz sayılır.",
-      "Bağış yapılabilecek kurumlar ve güncel tutar başvuru sayfasında belirtilir.",
-      "<strong>III.</strong> Başvurular MODS tarafından incelenir ve uygun kontenjan bulunması halinde başvuru sahibi kulüp iletişim gruplarına eklenir. Güncel kulüp kontenjanı maksimum <strong>70 kişidir</strong>.",
-      "<strong>IV.</strong> Başvuru formu kulübün genişleme politikalarına göre MODS tarafından belirli dönemlerde kapatılıp açılabilir.",
-      "<strong>V.</strong> Her üyelik grubu için ayrı bir WhatsApp iletişim grubu bulunur. Kulübün temel iletişim platformu bu gruplardır. Gruplar şu şekilde bölümlenmiştir:",
+      "<strong>II.</strong> Başvurular MODS tarafından incelenir ve uygun kontenjan bulunması halinde başvuru sahibi kulüp iletişim gruplarına eklenir. Güncel kulüp kontenjanı maksimum <strong>70 kişidir</strong>.",
+      "<strong>III.</strong> Başvuru formu kulübün genişleme politikalarına göre MODS tarafından belirli dönemlerde kapatılıp açılabilir.",
+      "<strong>IV.</strong> Her üyelik grubu için ayrı bir WhatsApp iletişim grubu bulunur. Kulübün temel iletişim platformu bu gruplardır. Gruplar şu şekilde bölümlenmiştir:",
     ],
 
     // Üyelik grupları — başvuru sayfasında kart olarak gösterilir
