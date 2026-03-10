@@ -60,29 +60,35 @@ function parseSssCevap(cevap) {
 function renderBasvuru() {
   const v = ICERIK.basvuru;
 
-  const rozetHTML = v.rozet
-    ? `<div class="basvuru-badge">${v.rozet}</div>` : '';
+  // Blok parçaları
+  const bloklar = {
+    rozet: v.rozet
+      ? `<div class="basvuru-badge">${v.rozet}</div>` : '',
 
-  const kartlarHTML = (v.uyelikGruplari || []).map(g => {
-    const icerik = g.maddeler
-      ? `<ul class="uyelik-maddeler">${g.maddeler.map(m => `<li>${m}</li>`).join('')}</ul>`
-      : `<p>${g.aciklama}</p>`;
-    return `<div class="uyelik-kart"><h3>${g.emoji} ${g.ad}</h3>${icerik}</div>`;
-  }).join('');
+    kosullar: v.kosullar && v.kosullar.length
+      ? `<div class="basvuru-kosullar">${v.kosullar.map(k => `<p>${k}</p>`).join('')}</div>` : '',
 
-  const kosullarHTML = (v.kosullar || []).map(k => `<p>${k}</p>`).join('');
+    kartlar: v.uyelikGruplari && v.uyelikGruplari.length
+      ? `<div class="uyelik-kartlari">${v.uyelikGruplari.map(g => {
+          const icerik = g.maddeler
+            ? `<ul class="uyelik-maddeler">${g.maddeler.map(m => `<li>${m}</li>`).join('')}</ul>`
+            : `<p>${g.aciklama}</p>`;
+          return `<div class="uyelik-kart"><h3>${g.emoji} ${g.ad}</h3>${icerik}</div>`;
+        }).join('')}</div>` : '',
 
-  const formBtn = v.formLinki
-    ? `<a class="form-btn" href="${v.formLinki}" target="_blank">${v.formButonYazi}</a>` : '';
+    altNot: v.altNot
+      ? `<p class="basvuru-alt-not">${v.altNot}</p>` : '',
+
+    formBtn: v.formLinki
+      ? `<a class="form-btn" href="${v.formLinki}" target="_blank">${v.formButonYazi}</a>` : '',
+  };
+
+  // siralama dizisi yoksa varsayılan sıra
+  const siralama = v.siralama || ['rozet', 'kosullar', 'kartlar', 'altNot', 'formBtn'];
+  const icerikHTML = siralama.map(key => bloklar[key] || '').join('');
 
   return hero(v.heroEtiket, v.heroBaslik, v.heroAciklama)
-    + `<section class="basvuru-section">
-        ${rozetHTML}
-        <div class="uyelik-kartlari">${kartlarHTML}</div>
-        <div class="basvuru-kosullar">${kosullarHTML}</div>
-        <p class="basvuru-alt-not">${v.altNot}</p>
-        ${formBtn}
-      </section>`
+    + `<section class="basvuru-section">${icerikHTML}</section>`
     + buildFooter(ICERIK.site.telif, [
         { href: ICERIK.site.instagram, yazi: 'Instagram', target: '_blank' },
         { onclick: "showPage('iletisim')", yazi: 'İletişim' },
