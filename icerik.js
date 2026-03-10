@@ -212,27 +212,27 @@ const ICERIK = {
       },
       
       {
-        id:     "bolum-d",
-        harf:   "D",
+        id:     "bolum-b",
+        harf:   "B",
         baslik: "Kulüp Yönetimi (MODS) ve Seçimler",
         icerik: [
-          { tip: "paragraf", metin: "<strong>D1.</strong> MODS, kulübün yönetim organıdır; dört üyeden oluşur. İkisi daimi kurucu üye, diğer ikisi ise bir yıllık görev süresi için seçilmiş üyelerdir. Görev süresi 1 Ağustos'ta başlar ve ertesi yıl 1 Ağustos'a kadar devam eder." },
-          { tip: "paragraf", metin: "<strong>D2.</strong> MODS seçimleri her yıl temmuz ayında yapılır. Aday olabilmek için adaylık başlangıç tarihinde Salon üyesi olmak, son bir yılda en az 6 buluşmaya katılmış olmak ve görev süresi boyunca buluşmaların en az %80'ine katılmayı taahhüt etmek gerekmektedir." },
-          { tip: "paragraf", metin: "<strong>D3.</strong> Üç veya daha fazla adayın olduğu seçimlerde 1, 2 ve 5 puanları dağıtılır; en çok puan alan iki aday MODS üyesi seçilir. İki veya daha az aday varsa Salon üyelerinin katıldığı Evet/Hayır oylaması yapılır; en az %66 \"Evet\" oyu alan aday MODS'a dahil olur." },
-          { tip: "paragraf", metin: "<strong>D4.</strong> Kulüp moderatörlüğü gönüllülük esasına dayalıdır. Moderatör, bir ay önceden haber vermek kaydıyla görevini bırakabilir. Görevini erken bırakan moderatör üç yıl süreyle tekrar aday olamaz." },
-          { tip: "paragraf", metin: "<strong>D5.</strong> Görevini yerine getirmeyen moderatörler kurucu üyeler tarafından uyarılır. Üç kez uyarılan moderatörün görevi sona erdirilir; bu kişi de üç yıl süreyle tekrar aday olamaz." },
+          { tip: "paragraf", metin: "<strong>B1.</strong> MODS, kulübün yönetim organıdır; dört üyeden oluşur. İkisi daimi kurucu üye, diğer ikisi ise bir yıllık görev süresi için seçilmiş üyelerdir. Görev süresi 1 Ağustos'ta başlar ve ertesi yıl 1 Ağustos'a kadar devam eder." },
+          { tip: "paragraf", metin: "<strong>B2.</strong> MODS seçimleri her yıl temmuz ayında yapılır. Aday olabilmek için adaylık başlangıç tarihinde Salon üyesi olmak, son bir yılda en az 6 buluşmaya katılmış olmak ve görev süresi boyunca buluşmaların en az %80'ine katılmayı taahhüt etmek gerekmektedir." },
+          { tip: "paragraf", metin: "<strong>B3.</strong> Üç veya daha fazla adayın olduğu seçimlerde 1, 2 ve 5 puanları dağıtılır; en çok puan alan iki aday MODS üyesi seçilir. İki veya daha az aday varsa Salon üyelerinin katıldığı Evet/Hayır oylaması yapılır; en az %66 \"Evet\" oyu alan aday MODS'a dahil olur." },
+          { tip: "paragraf", metin: "<strong>B4.</strong> Kulüp moderatörlüğü gönüllülük esasına dayalıdır. Moderatör, bir ay önceden haber vermek kaydıyla görevini bırakabilir. Görevini erken bırakan moderatör üç yıl süreyle tekrar aday olamaz." },
+          { tip: "paragraf", metin: "<strong>B5.</strong> Görevini yerine getirmeyen moderatörler kurucu üyeler tarafından uyarılır. Üç kez uyarılan moderatörün görevi sona erdirilir; bu kişi de üç yıl süreyle tekrar aday olamaz." },
         ],
       },
 
       {
-        id:     "bolum-e",
-        harf:   "E",
+        id:     "bolum-c",
+        harf:   "C",
         baslik: "Ek Etkinlikler ve Yönetmen Sineması",
         icerik: [
-          { tip: "paragraf", metin: "<strong>E1.</strong> Kitap okumalarının yanı sıra film izleme ve yorumlama, tiyatro, konser, sportif faaliyetler ve benzeri ek etkinlikler gerçekleştirilebilir. Etkinliklerin türü ve sıklığı MODS tarafından belirlenir." },
+          { tip: "paragraf", metin: "<strong>C1.</strong> Kitap okumalarının yanı sıra film izleme ve yorumlama, tiyatro, konser, sportif faaliyetler ve benzeri ek etkinlikler gerçekleştirilebilir. Etkinliklerin türü ve sıklığı MODS tarafından belirlenir." },
           {
             tip:    "altbolum",
-            etiket: "E2 — Yönetmen Sineması",
+            etiket: "C2 — Yönetmen Sineması",
             icerik: [
               { tip: "paragraf", metin: "Yönetmen ve ilgili üç filmi birlikte paket halinde önerilir; oylamayla en çok puan alan yönetmen seçilir. Seçilen yönetmen iki yıl boyunca tekrar aday gösterilemez." },
               { tip: "paragraf", metin: "Aday sayısına göre dağıtılacak puanlar:" },
