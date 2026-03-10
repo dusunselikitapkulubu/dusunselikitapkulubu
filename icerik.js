@@ -15,8 +15,21 @@ const ICERIK = {
     sonGuncelleme: "Son güncelleme: Mart 2026",
   },
 
-  // ── Başvuru Sayfası ─────────────────────────────────────
-  <div class="uyelik-kartlari">
+  // ── Başvuru Sayfası ────────────────────────────────────
+  
+  basvuru: {
+    heroEtiket:  "Üyelik",
+    heroBaslik:  "Kulübe\n<em>Başvur</em>",
+    heroAciklama: "Düşünseli Kitap Kulübü'ne katılmak için aşağıdaki bilgileri okuyun. Başvuru formu aktif olduğunda buradan erişebilirsiniz.",
+
+    rozet: "Başvurular Yakında Açılacak",  // Üstteki turuncu rozet. Açıldığında silin veya değiştirin.
+
+    bilgiler: [
+      {
+  baslik: "Üyelik Grupları ve Katılım",
+  paragraflar: [
+
+    <div class="uyelik-kartlari">
 
   <div class="uyelik-kart">
     <h3>🟡 Lobi</h3>
@@ -46,18 +59,7 @@ const ICERIK = {
   </div>
 
 </div>
-  
-  basvuru: {
-    heroEtiket:  "Üyelik",
-    heroBaslik:  "Kulübe\n<em>Başvur</em>",
-    heroAciklama: "Düşünseli Kitap Kulübü'ne katılmak için aşağıdaki bilgileri okuyun. Başvuru formu aktif olduğunda buradan erişebilirsiniz.",
-
-    rozet: "Başvurular Yakında Açılacak",  // Üstteki turuncu rozet. Açıldığında silin veya değiştirin.
-
-    bilgiler: [
-      {
-  baslik: "Üyelik Grupları ve Katılım",
-  paragraflar: [
+    
     "<strong>C1.</strong> Kulübe üyelik başvurusu başvuru formu aracılığıyla yapılır. Reel ortamlarda yüz yüze yapılan buluşmalara katılabilmek ve kulüp üyesi olabilmek için başvuru formunun doldurulması gereklidir.",
     "<strong>Başvuru formu:</strong> https://forms.gle/Q2HXcBiZkrEuA9wB9",
 
