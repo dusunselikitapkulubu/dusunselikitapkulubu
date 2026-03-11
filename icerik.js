@@ -81,7 +81,12 @@ const ICERIK = {
 
     // tip: "yeni" | "etkinlik" | "bilgi"
     liste: [
-      
+      {
+        tip:    "yeni",
+        tarih:  "Nisan 2026",
+        baslik: "Yeni Duyuru",
+        metin:  "Nisan ayında okunacak kitap duyurulacak.",
+      },
       {
         tip:    "bilgi",
         tarih:  "Süregelen",
