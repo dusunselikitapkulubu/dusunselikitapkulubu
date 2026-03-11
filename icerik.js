@@ -22,7 +22,7 @@ const ICERIK = {
     heroAciklama: "Düşünseli Kitap Kulübü'ne katılmak için aşağıdaki bilgileri okuyun. Başvuru formu aktif olduğunda buradan erişebilirsiniz.",
 
     // Üstteki turuncu rozet. Form açıldığında boş bırakın: rozet: ""
-    rozet: "Başvurular Yakında Açılacak",
+    rozet: "Başvurular Açıldı",
 
     // Koşullar — her madde ayrı satırda gösterilir
     kosullar: [
