@@ -2,25 +2,40 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+  <meta name="description" content="Düşünseli Kitap Kulübü. Ortak okumalar, tartışmalar ve paylaşılan keşifler." />
   <title>Düşünseli Kitap Kulübü</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
     <a class="logo" onclick="showPage('etkinlikler')">
-      <img src="assets/logo/logo.png" alt="Düşünseli Kitap Kulübü" class="logo-img" />
-      <span id="site-adi"></span><span>.</span>
+      <img src="assets/logo/logo.png" alt="Düşünseli Kitap Kulübü" class="logo-img" onerror="this.style.display='none'" />
+      <span id="site-adi"></span><span class="logo-dot">.</span>
     </a>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav>
-      <a onclick="showPage('basvuru')"    id="nav-basvuru">Başvuru</a>
-      <a onclick="showPage('duyurular')"  id="nav-duyurular">Duyurular</a>
+    
+    <div class="menu-toggle" onclick="toggleMenu()" id="menu-toggle-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </div>
+    
+    <div class="nav-overlay" onclick="closeMenu()"></div>
+    
+    <nav id="main-nav">
+      <a onclick="showPage('basvuru')" id="nav-basvuru">Başvuru</a>
+      <a onclick="showPage('duyurular')" id="nav-duyurular">Duyurular</a>
       <div class="nav-dropdown">
-        <a id="nav-hakkinda">Kulüp Hakkında</a>
+        <a id="nav-hakkinda">Kulüp Hakkında
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>
+        </a>
         <div class="dropdown-menu">
           <a onclick="showHakkinda('genel')">Genel Bilgi</a>
           <div class="dropdown-divider"></div>
@@ -30,15 +45,17 @@
         </div>
       </div>
       <a onclick="showPage('etkinlikler')" id="nav-etkinlikler">Etkinlikler</a>
-      <a onclick="showPage('iletisim')"    id="nav-iletisim">İletişim</a>
+      <a onclick="showPage('iletisim')" id="nav-iletisim">İletişim</a>
     </nav>
   </header>
 
-  <div id="page-basvuru"     class="page"></div>
-  <div id="page-duyurular"   class="page"></div>
-  <div id="page-etkinlikler" class="page"></div>
-  <div id="page-hakkinda"    class="page"></div>
-  <div id="page-iletisim"    class="page"></div>
+  <main id="main-content">
+    <div id="page-basvuru"     class="page"></div>
+    <div id="page-duyurular"   class="page"></div>
+    <div id="page-etkinlikler" class="page"></div>
+    <div id="page-hakkinda"    class="page"></div>
+    <div id="page-iletisim"    class="page"></div>
+  </main>
 
   <script src="icerik.js"></script>
   <script src="script.js"></script>
