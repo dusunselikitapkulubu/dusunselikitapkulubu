@@ -85,7 +85,7 @@ const ICERIK = {
         tip: "yeni",
         tarih: "5 Nisan 2026",
         baslik: "Nisan Ayı Okuma Toplantısı",
-        metin: "Nisan ayında üzerine konuşacağımız kitabımız seçildi. Okunacak eserimizin adı Dinle Küçük Adam - Wilhelm Reich. Toplantı tarihi 5 Nisan 2026 pazar günü saat 14:00.",
+        metin: "Nisan ayında üzerine konuşacağımız kitabımız seçildi. Okunacak eserimizin adı Dinle Küçük Adam - Wilhelm Reich. Toplantı tarihi 5 Nisan 2026 pazar günü saat 14:00. Mekan ayrıca duyurulacaktır.",
       },
       {
         tip: "bilgi",
@@ -174,6 +174,7 @@ const ICERIK = {
         id: "bolum-b",
         harf: "B",
         baslik: "Salection Kitap Seçimi",
+        etiket: "Askıya Alındı",
         icerik: [
 
           { tip: "paragraf", metin: "<strong>B1.</strong> Salection; Salihli ve İngilizce seçim anlamına gelen election kelimelerinden esinlenerek oluşturulmuş kulübe özgü bir kitap seçim sistemidir." },
@@ -280,7 +281,7 @@ const ICERIK = {
     one: {
       kategori: "Kitap Toplantısı",
       baslik: "Nisan Ayı Okuma Toplantısı",
-      aciklama: "Nisan ayında üzerine konuşacağımız kitabımız seçildi. Okunacak eserimizin adı Dinle Küçük Adam - Wilhelm Reich. Toplantı tarihi 5 Nisan 2026 pazar günü saat 14:00.",
+      aciklama: "Nisan ayında üzerine konuşacağımız kitabımız seçildi. Okunacak eserimizin adı Dinle Küçük Adam - Wilhelm Reich. Toplantı tarihi 5 Nisan 2026 pazar günü saat 14:00. Mekan Ayrıca duyurulacaktır.",
       etiketler: ["Okuma", "Tartışma", "Etkinlik"],
       linkMetin: "",    // Boş bırakılırsa buton gösterilmez
       yazar: "MODS",

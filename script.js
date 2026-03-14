@@ -132,7 +132,7 @@ function renderHakkinda() {
   const tocLinks = kr.bolumler.filter(b => !b.gizli).map(b =>
     `<a onclick="scrollToRule('${b.id}')" class="toc-link">
       <span class="toc-letter">${b.harf}</span>
-      <span class="toc-title">${b.baslik}</span>
+      <span class="toc-title">${b.baslik}${b.etiket ? ` <span class="badge badge-accent" style="margin-left: 8px; font-size: 0.65rem; padding: 0.2rem 0.5rem; vertical-align: middle;">${b.etiket}</span>` : ''}</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>`
   ).join('');
@@ -142,7 +142,7 @@ function renderHakkinda() {
       <div class="chapter-bg-letter">${b.harf}</div>
       <div class="chapter-header">
         <span class="chapter-letter">${b.harf}</span>
-        <h2 class="chapter-title">${b.baslik}</h2>
+        <h2 class="chapter-title">${b.baslik}${b.etiket ? ` <span class="badge badge-accent" style="margin-left: 12px; font-size: 0.75rem; vertical-align: middle; padding: 0.3rem 0.6rem; letter-spacing: 0.05em;">${b.etiket}</span>` : ''}</h2>
       </div>
       <div class="rule-block">${renderIcerikBlok(b.icerik)}</div>
     </div>
