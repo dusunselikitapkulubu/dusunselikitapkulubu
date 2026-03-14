@@ -39,7 +39,6 @@ const ICERIK = {
         ad: "Lobi",
         maddeler: [
           "Başvurusu onaylanmış katılımcılardan oluşur. Kulübe katılan her yeni üye Lobi grubundan giriş yapar.",
-          "Salon Üyeliği şartını sağlamayan mevcut üyenin üyeliği de Lobi'ye düşürülür.",
           "Lobide kalma süresi azami <strong>3 aydır</strong>. Bu süre içinde herhangi bir okumaya katılmayan üye lobiden çıkarılır.",
           "Kendi isteğiyle ayrılan veya devamsızlık sebebiyle çıkarılan üye, tekrar katılmak isterse tüm başvuru aşamalarını yeniden tamamlamak durumundadır.",
         ],
