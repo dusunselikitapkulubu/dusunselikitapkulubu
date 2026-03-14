@@ -82,6 +82,12 @@ const ICERIK = {
     // tip: "yeni" | "etkinlik" | "bilgi"
     liste: [
       {
+        tip: "yeni",
+        tarih: "5 Nisan 2026",
+        baslik: "Nisan Ayı Okuma Toplantısı",
+        metin: "Nisan ayında üzerine konuşacağımız kitabımız seçildi. Okunacak eserimizin adı Dinle Küçük Adam - Wilhelm Reich. Toplantı tarihi 5 Nisan 2026 pazar günü saat 14:00.",
+      },
+      {
         tip: "bilgi",
         tarih: "Süregelen",
         baslik: "Başvuru Formu Bilgisi",
